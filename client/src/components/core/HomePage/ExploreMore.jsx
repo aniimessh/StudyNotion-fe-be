@@ -7,8 +7,8 @@ const Tabs = [
   "Free",
   "New to coding",
   "Most popular",
-  "Skills path",
-  "Career path",
+  "Skills paths",
+  "Career paths",
 ];
 
 export const ExploreMore = () => {
@@ -53,19 +53,17 @@ export const ExploreMore = () => {
 
       {/* course group */}
 
-      <div className="absolute flex gap-10 justify-between w-full border bg-black">
-        {
-          courses.map((item, index) => {
-            return (
-              <CourseCard 
-              key={index}
-              cardData = {item}
-              currentCard = {currentCard}
-              setCurrentCard = {setCurrentCard}
-              />
-            )
-          })
-        }
+      <div className="absolute flex gap-10 -bottom-28 justify-between w-full">
+        {courses.map((item, index) => {
+          return (
+            <CourseCard
+            key={index}
+            cardData = {item}
+            currentCard = {currentCard}
+            setCurrentCard = {setCurrentCard}
+            />
+          );
+        })}
       </div>
     </div>
   );
