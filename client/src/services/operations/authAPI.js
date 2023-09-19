@@ -16,16 +16,16 @@ const {
 
 export function sendOtp(email, navigate) {
   return async (dispatch) => {
-    const toastId = toast.loading("Loading...");
+    const toastId = toast.loading("OTP Loading...");
     dispatch(setLoading(true));
     try {
       const response = await apiConnector("POST", SENDOTP_API, {
         email,
         checkUserPresent: true,
       });
-      console.log("SEND OTP API RESPONSE............", response);
+      console.log("SENDOTP API RESPONSE............", response);
 
-      console.log(response.data.success);
+      console.log("OTP IS",response.data.otp);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -34,7 +34,7 @@ export function sendOtp(email, navigate) {
       toast.success("OTP Sent Successfully");
       navigate("/verify-email");
     } catch (error) {
-      console.log("SEND OTP API ERROR............", error);
+      console.log("SENDOTP API ERROR............", error);
       toast.error("Could Not Send OTP");
     }
     dispatch(setLoading(false));
@@ -53,7 +53,7 @@ export function signUp(
   navigate
 ) {
   return async (dispatch) => {
-    const toastId = toast.loading("Loading...");
+    const toastId = toast.loading("Signup Loading...");
     dispatch(setLoading(true));
     try {
       const response = await apiConnector("POST", SIGNUP_API, {
@@ -65,7 +65,6 @@ export function signUp(
         confirmPassword,
         otp,
       });
-      console.log(response)
 
       console.log("SIGNUP API RESPONSE............", response);
 
@@ -117,6 +116,18 @@ export function login(email, password, navigate) {
   };
 }
 
+export function logout(navigate) {
+  return (dispatch) => {
+    dispatch(setToken(null));
+    dispatch(setUser(null));
+    dispatch(resetCart());
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    toast.success("Logged Out");
+    navigate("/");
+  };
+}
+
 export function getPasswordResetToken(email, setEmailSent) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...");
@@ -126,7 +137,7 @@ export function getPasswordResetToken(email, setEmailSent) {
         email,
       });
 
-      console.log("RESETPASSTOKEN RESPONSE............", response);
+      console.log("RESET PASSWORD TOKEN RESPONSE....", response);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -135,17 +146,15 @@ export function getPasswordResetToken(email, setEmailSent) {
       toast.success("Reset Email Sent");
       setEmailSent(true);
     } catch (error) {
-      console.log("RESETPASSTOKEN ERROR............", error);
-      toast.error("Failed To Send Reset Email");
+      console.log("RESET PASSWORD TOKEN Error", error);
+      toast.error("Failed to send email for resetting password");
     }
     dispatch(setLoading(false));
-    toast.dismiss(toastId);
   };
 }
 
-export function resetPassword(password, confirmPassword, token, navigate) {
+export function resetPassword(password, confirmPassword, token) {
   return async (dispatch) => {
-    const toastId = toast.loading("Loading...");
     dispatch(setLoading(true));
     try {
       const response = await apiConnector("POST", RESETPASSWORD_API, {
@@ -154,31 +163,17 @@ export function resetPassword(password, confirmPassword, token, navigate) {
         token,
       });
 
-      console.log("RESETPASSWORD RESPONSE............", response);
+      console.log("RESET Password RESPONSE ... ", response);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
 
-      toast.success("Password Reset Successfully");
-      navigate("/login");
+      toast.success("Password has been reset successfully");
     } catch (error) {
-      console.log("RESETPASSWORD ERROR............", error);
-      toast.error("Failed To Reset Password");
+      console.log("RESET PASSWORD TOKEN Error", error);
+      toast.error("Unable to reset password");
     }
-    toast.dismiss(toastId);
     dispatch(setLoading(false));
-  };
-}
-
-export function logout(navigate) {
-  return (dispatch) => {
-    dispatch(setToken(null));
-    dispatch(setUser(null));
-    dispatch(resetCart())
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    toast.success("Logged Out");
-    navigate("/");
   };
 }
