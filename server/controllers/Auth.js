@@ -20,13 +20,16 @@ exports.signup = async (req, res) => {
       password,
       confirmPassword,
       accountType,
+      otp,
+      contactNumber
     } = req.body;
     // Check if All Details are there or not
     if (
       !firstName ||
       !lastName ||
       !email ||
-      !password
+      !password ||
+      !otp
     ) {
       return res.status(403).send({
         success: false,
