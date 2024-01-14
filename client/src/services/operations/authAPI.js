@@ -1,10 +1,10 @@
 import { toast } from "react-hot-toast";
 
 import { setLoading, setToken } from "../../slices/authSlice";
-import { resetCart } from "../../slices/cartSlice"
+import { resetCart } from "../../slices/cartSlice";
 import { setUser } from "../../slices/profileSlice";
 import { apiConnector } from "../apiconnector";
-import { endpoints } from "../api"
+import { endpoints } from "../api";
 
 const {
   SENDOTP_API,
@@ -25,7 +25,7 @@ export function sendOtp(email, navigate) {
       });
       console.log("SENDOTP API RESPONSE............", response);
 
-      console.log("OTP IS",response.data.otp);
+      console.log("OTP IS", response.data.otp);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -106,6 +106,7 @@ export function login(email, password, navigate) {
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`;
       dispatch(setUser({ ...response.data.user, image: userImage }));
       localStorage.setItem("token", JSON.stringify(response.data.token));
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       navigate("/dashboard/my-profile");
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
