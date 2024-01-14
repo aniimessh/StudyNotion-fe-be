@@ -31,9 +31,9 @@ export const Footer = () => {
           <div className="flex flex-col gap-2">
             <img src={StudyLogo} alt="" />
             <p className="text-xl font-bold">Company</p>
-            {Company.map((item) => {
+            {Company.map((item, index) => {
               return (
-                <p className="text-white">
+                <p className="text-white" key={index}>
                   <Link to={`${item}`}>{item}</Link>
                 </p>
               );
@@ -42,9 +42,9 @@ export const Footer = () => {
 
           <div className="flex flex-col gap-2">
             <p className="text-xl font-bold mb-2">Resource</p>
-            {Resource.map((item) => {
+            {Resource.map((item, index) => {
               return (
-                <p className="text-white">
+                <p className="text-white" key={index}>
                   {" "}
                   <Link to={`/${item}`}>{item}</Link>
                 </p>
@@ -55,9 +55,9 @@ export const Footer = () => {
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
               <p className="text-xl font-bold mb-2">Plans</p>
-              {Plans.map((item) => {
+              {Plans.map((item, index) => {
                 return (
-                  <p className="text-white">
+                  <p className="text-white" key={index}>
                     <Link to={`/${item}`}>{item}</Link>
                   </p>
                 );
@@ -66,9 +66,9 @@ export const Footer = () => {
 
             <div className="flex flex-col gap-2">
               <p className="text-xl font-bold mb-2">Community</p>
-              {community.map((item) => {
+              {community.map((item, index) => {
                 return (
-                  <p className="text-white">
+                  <p className="text-white" key={index}>
                     <Link to={`/${item}`}>{item}</Link>
                   </p>
                 );
@@ -79,13 +79,13 @@ export const Footer = () => {
 
         <div className="flex mt-10 text-white w-[50%]">
           <div className="flex justify-evenly w-[100%]">
-            {FooterLink2.map((item) => {
+            {FooterLink2.map((item, index) => {
               return (
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2" key={index}>
                   <p className="text-xl font-bold mb-2">{item.title}</p>
-                  {item.links.map((item) => {
+                  {item.links.map((item, index) => {
                     return (
-                      <p className="text-white">
+                      <p className="text-white" key={index}>
                         <Link to={`${item.link}`}>{item.title}</Link>
                       </p>
                     );
@@ -99,8 +99,8 @@ export const Footer = () => {
 
       <div className="w-11/12 mx-auto flex justify-between border-t border-black mt-10">
         <div className="flex w-[50%] mt-10">
-          {FooterDetails.map((item) => {
-            return <p className="text-white">{item} </p>;
+          {FooterDetails.map((item, index) => {
+            return <p className="text-white" key={index}>{item} </p>;
           })}
         </div>
         <div className="m-10 text-white">

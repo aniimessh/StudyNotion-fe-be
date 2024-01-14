@@ -8,11 +8,12 @@ import FoundStoryImage from "../assets/Images/FoundingStory.png";
 import StatsComponent from "../components/core/AboutPage/StatsComponent";
 import LearningGrid from "../components/core/AboutPage/LearningGrid";
 import ContactFormSection from "../components/core/AboutPage/ContactFormSection";
+import { Footer } from "../components/common/Footer";
 
 const About = () => {
   return (
-    <div className=" w-11/12 max-w-maxContent mx-auto">
-      <section>
+    <div className="">
+      <section className="border">
         <div>
           <header>
             Driving Innovation in Online Education for a{" "}
@@ -39,7 +40,7 @@ const About = () => {
       </section>
 
       <section>
-        <div  className="flex flex-col">
+        <div className="flex flex-col">
           <div className="flex">
             <div>
               <h1>Our Founding Story </h1>
@@ -99,6 +100,15 @@ const About = () => {
       </section>
 
       <ContactFormSection />
+
+      <section>
+        <div>
+        Reviews from other learners
+        {/* <ReviewSlider /> */}
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 };
