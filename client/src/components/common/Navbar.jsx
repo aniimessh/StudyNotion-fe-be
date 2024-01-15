@@ -49,7 +49,7 @@ export const Navbar = () => {
   // }, []);
 
   return (
-    <div className="h-14 border-b bordBsCartChecker-richblack-700 flex items-center">
+    <div className="h-14 border-b border-richblack-700 flex items-center">
       <div className="flex w-11/12 max-w-maxContent items-center mx-auto justify-between">
         <Link to={"/"}>
           <img
