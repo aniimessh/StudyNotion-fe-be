@@ -82,7 +82,7 @@ const ContactUsForm = () => {
         </div>
 
         <label htmlFor="">
-          <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+          <p className="mt-2 text-[0.875rem] leading-[1.375rem] text-richblack-5">
             Email <sup className="text-pink-200">*</sup>
           </p>
           <input
@@ -100,7 +100,7 @@ const ContactUsForm = () => {
         </label>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="" className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+          <label htmlFor="" className="mt-2 text-[0.875rem] leading-[1.375rem] text-richblack-5">
               Phone <sup className="text-pink-200">*</sup></label>
           <div className="flex flex-col gap-4 ">
             <div className="flex gap-x-4">
@@ -141,7 +141,7 @@ const ContactUsForm = () => {
         </div>
 
         <label htmlFor="">
-          <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+          <p className="mt-2 text-[0.875rem] leading-[1.375rem] text-richblack-5">
               Message <sup className="text-pink-200">*</sup></p>
           <textarea
             name="message"
@@ -159,7 +159,7 @@ const ContactUsForm = () => {
         </label>
         <button
           type="submit"
-          className="rounded-md bg-yellow-50 text-center px-5 py-2 text-base w-full"
+          className="rounded-md bg-yellow-50 text-center px-5 py-2 text-base w-full mt-2"
         >
           Send Message
         </button>

@@ -6,7 +6,7 @@ const LearningGridArray = [
   {
     order: -1,
     heading: "World-Class Learning for",
-    highlightText: "Anyone, Anywhere",
+    highlightText: " Anyone, Anywhere",
     description:
       "Studynotion partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.",
     BtnText: "Learn More",
@@ -60,7 +60,11 @@ const LearningGrid = () => {
             <div className="lg:w-[90%] flex flex-col pb-5 gap-x-3 p-5">
               <div className="text-4xl font-semibold">
                 {card.heading}
-                <HightLightText text={card.highlightText} />
+                <HightLightText
+                  text={card.highlightText}
+                  startColor="from-[#5433FF]"
+                  endColor="to-[#20BDFF]"
+                />
               </div>
               <p className="font-medium">{card.description}</p>
               <div className="w-fit mt-4">
