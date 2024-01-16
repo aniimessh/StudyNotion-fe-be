@@ -13,27 +13,29 @@ const SidebarLink = ({ item, iconName }) => {
   };
 
   return (
-    <div>
+    <>
       <NavLink
         to={item?.path}
         onClick
         className={`${
           matchRoutes(item?.path) ? "bg-yellow-800" : "bg-opacity-0"
-        } relative py-2 px-8 text-sm font-medium`}
+        } relative text-sm font-medium w-full py-5`}
       >
         <span
           className={`absolute left-0 top-0 h-full w-1 bg-yellow-50 ${
             matchRoutes(item?.path) ? "opacity-100" : "opacity-0"
           }`}
         ></span>
-        <div className="flex items-center gap-x-2">
-          <Icon className="text-lg"/>
-          <span>
-            {item?.name}
-          </span>
+        <div
+          className={`flex items-center gap-x-2 px-4 font-inter font-medium ${
+            matchRoutes(item.path) ? "text-yellow-50" : "text-richblack-300"
+          }`}
+        >
+          <Icon className="text-lg" />
+          <span>{item?.name}</span>
         </div>
       </NavLink>
-    </div>
+    </>
   );
 };
 
