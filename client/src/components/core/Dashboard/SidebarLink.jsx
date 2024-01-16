@@ -19,7 +19,7 @@ const SidebarLink = ({ item, iconName }) => {
         onClick
         className={`${
           matchRoutes(item?.path) ? "bg-yellow-800" : "bg-opacity-0"
-        } relative text-sm font-medium w-full py-5`}
+        } relative text-sm font-medium w-full py-3`}
       >
         <span
           className={`absolute left-0 top-0 h-full w-1 bg-yellow-50 ${

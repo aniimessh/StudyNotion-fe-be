@@ -12,6 +12,8 @@ import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
+import MySetting from "./components/core/Dashboard/MySetting";
+import PageNotFound from "./components/common/PageNotFound";
 
 function App() {
   return (
@@ -72,10 +74,10 @@ function App() {
             </PrivateRoute>
           }
         >
-        <Route path="dashboard/my-profile" element={<MyProfile />} />
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+          <Route path="dashboard/settings" element={<MySetting />} />
+        <Route path="*" element={<PageNotFound />} />
         </Route>
-
-
       </Routes>
     </div>
   );

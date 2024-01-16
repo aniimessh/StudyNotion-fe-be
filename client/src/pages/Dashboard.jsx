@@ -12,7 +12,7 @@ const Dashboard = () => {
     return toast.loading("Loading");
   }
   return (
-    <div className="flex min-h-[calc(100vh-3.5rem)]">
+    <div className="flex min-h-[calc(100vh-3.5rem)] relative">
       <Sidebar />
       <div className="min-h-[calc(100vh-3.5rem)] w-11/12">
         <div className="mx-auto py-5 px-2">

@@ -29,9 +29,9 @@ const Sidebar = () => {
           })}
         </div>
 
-        <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-richblack-700"></div>
+        <div className="mx-auto h-[1px] w-10/12 bg-richblack-700"></div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col mt-2">
           <SidebarLink
             item={{ name: "Settings", path: "dashboard/settings" }}
             iconName="VscSettingsGear"
@@ -41,7 +41,7 @@ const Sidebar = () => {
             onClick={() =>
               setOpenModal({
                 text1: "Are you sure?",
-                text2: "You will be logged out",
+                text2: "You will be logged out of your account.",
                 btn1text: "Logout",
                 btn2text: "Cancel",
                 btn1handler: () => dispatch(logout(navigate)),
@@ -50,7 +50,7 @@ const Sidebar = () => {
             }
             className="text-sm font-medium text-richblack-300"
           >
-            <div className="flex items-center gp-x-4">
+            <div className="flex items-center gap-x-4 px-4 py-3">
               <VscSignOut className="text-lg" />
               <span>Logout</span>
             </div>
