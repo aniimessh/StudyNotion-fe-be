@@ -12,7 +12,7 @@ const MyProfile = () => {
       <p className="font-inter text-richblack-300 font-medium p-6">
         Home / Dashboard / <span className="text-yellow-200">My profile</span>
       </p>
-      <h1 className="font-inter text-2xl text-white font-medium px-6">
+      <h1 className="font-inter text-3xl text-white font-medium px-6">
         My Profile
       </h1>
 
