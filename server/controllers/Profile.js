@@ -27,10 +27,14 @@ exports.updateProfile = async (req, res) => {
     // Save the updated profile
     await profile.save();
 
+    const updatedUserDetails = await User.findById(id)
+      .populate("additionalDetails")
+      .exec()
+
     return res.json({
       success: true,
       message: "Profile updated successfully",
-      profile,
+      updatedUserDetails,
     });
   } catch (error) {
     console.log(error);
@@ -101,7 +105,7 @@ exports.updateDisplayPicture = async (req, res) => {
     const userId = req.user.id;
     const image = await uploadImageToCloudinary(
       displayPicture,
-      process.env.FOLDER_NAME,
+      process.env.DISPLAY_IMAGES_FOLDER_NAME,
       1000,
       1000
     );

@@ -1,8 +1,38 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import countryCode from "../../../data/countrycode.json";
+import { useState } from "react";
+import { updateProfile } from "../../../services/operations/settingAPI";
 
 const ProfileSection = () => {
   const { user } = useSelector((state) => state.profile);
+  const { token } = useSelector((state) => state.auth);
+  const [formData, setFormData] = useState({
+    profession: "" || user?.additionalDetails?.profession,
+    dateOfBirth: "" || user?.additionalDetails?.dateOfBirth,
+    gender: "" || user?.additionalDetails?.gender,
+    contactNumber: "" || user?.additionalDetails?.contactNumber,
+    about: "" || user?.additionalDetails?.about,
+  });
+  const dispatch = useDispatch();
+
+  console.log(formData);
+
+  const handleChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const result = await dispatch(updateProfile(token, formData));
+      console.log(result);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <section className="border border-richblack-600 w-1/2 p-6 ml-10 mt-5 bg-richblack-700 rounded-xl">
       <div>
@@ -15,12 +45,13 @@ const ProfileSection = () => {
               Display Name
             </p>
             <input
+              disabled
               type="text"
               value={user.firstName + " " + user.lastName}
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 font-inter"
+              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-300 font-medium font-inter hover:cursor-not-allowed"
             />
             <p className="text-xs text-richblack-500 font-inter">
               Name entered above will be used for all issued certifies.
@@ -32,18 +63,18 @@ const ProfileSection = () => {
               Profession
             </p>
             <select
-              name=""
-              id=""
+              name="profession"
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 font-inter"
+              className="w-full rounded-[0.5rem]  bg-richblack-800 p-[12px] text-richblack-300 font-inter"
+              onChange={handleChange}
+              value={formData.profession}
             >
-              <option value="" disabled>
-                Select Your Profession
-              </option>
-              <option value="">Developer</option>
-              <option value="">Student</option>
+              <option value="">Select Your Profession</option>
+              <option value="Developer">Developer</option>
+              <option value="Student">Student</option>
+              <option value="Instructor">Instructor</option>
             </select>
           </label>
         </div>
@@ -54,12 +85,13 @@ const ProfileSection = () => {
             </p>
             <input
               type="date"
-              name=""
-              id=""
+              name="dateOfBirth"
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
+              value={formData.dateOfBirth}
               className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-500 font-inter"
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="" className="w-1/2">
@@ -78,10 +110,13 @@ const ProfileSection = () => {
                   htmlFor="male"
                 >
                   <input
-                    name="type"
+                    name="gender"
                     type="radio"
                     className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-yellow-50 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-yellow-500 before:opacity-0 before:transition-opacity checked:border-yellow-50 checked:before:bg-yellow-500 hover:before:opacity-10"
                     id="male"
+                    value="male"
+                    checked={formData.gender === "male"}
+                    onChange={handleChange}
                   />
                   <span class="absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
                     <svg
@@ -107,10 +142,13 @@ const ProfileSection = () => {
                   htmlFor="female"
                 >
                   <input
-                    name="type"
+                    name="gender"
                     type="radio"
                     className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-yellow-50 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-yellow-500 before:opacity-0 before:transition-opacity checked:border-yellow-50 checked:before:bg-yellow-500 hover:before:opacity-10"
                     id="female"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    checked={formData.gender === "female"}
                   />
                   <span class="absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
                     <svg
@@ -136,10 +174,13 @@ const ProfileSection = () => {
                   htmlFor="other"
                 >
                   <input
-                    name="type"
+                    name="gender"
                     type="radio"
                     className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-yellow-50 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-yellow-500 before:opacity-0 before:transition-opacity checked:border-yellow-50 checked:before:bg-yellow-500 hover:before:opacity-10"
                     id="other"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    checked={formData.gender === "other"}
                   />
                   <span class="absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
                     <svg
@@ -168,29 +209,16 @@ const ProfileSection = () => {
               Phone Number
             </p>
             <div className="flex gap-x-2">
-              <select
-                name="dropdown"
-                id="dropdown"
-                style={{
-                  boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-                }}
-                className="w-[4.8rem] rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
-              >
-                {countryCode.map((data, index) => (
-                  <option value={data.code} key={index}>
-                    {data.code}-{data.country}
-                  </option>
-                ))}
-              </select>
               <input
                 type="tel"
-                name=""
+                name="contactNumber"
                 id=""
                 style={{
                   boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                 }}
                 className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-500 font-inter"
-                value={user?.additionalDetails?.contactNumber}
+                value={formData.contactNumber}
+                onChange={handleChange}
               />
             </div>
           </label>
@@ -200,17 +228,20 @@ const ProfileSection = () => {
             </p>
             <input
               type="text"
+              name="about"
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
               className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-500 font-inter"
               placeholder="Enter Bio Details"
+              onChange={handleChange}
+              value={formData.about}
             />
           </label>
         </div>
         <div className="mt-2 flex justify-end">
           <button
-            onClick={() => {}}
+            onClick={handleSubmit}
             className="flex items-center bg-yellow-50 px-6 py-2 rounded-lg font-inter"
           >
             Save

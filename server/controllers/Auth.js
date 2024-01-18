@@ -21,16 +21,10 @@ exports.signup = async (req, res) => {
       confirmPassword,
       accountType,
       otp,
-      contactNumber
+      contactNumber,
     } = req.body;
     // Check if All Details are there or not
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !password ||
-      !otp
-    ) {
+    if (!firstName || !lastName || !email || !password || !otp) {
       return res.status(403).send({
         success: false,
         message: "All Fields are required",
@@ -84,6 +78,7 @@ exports.signup = async (req, res) => {
       dateOfBirth: null,
       about: null,
       contactNumber: null,
+      profession: null,
     });
     const user = await User.create({
       firstName,
