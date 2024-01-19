@@ -4,10 +4,11 @@ import { SlArrowLeft } from "react-icons/sl";
 import { useDispatch, useSelector } from "react-redux";
 import { updateDisplayPicture } from "../../../services/operations/settingAPI";
 import ProfileSection from "./ProfileSection";
+import ChangePasswordSection from "./ChangePasswordSection";
+import UpdatePassword from "./ChangePasswordSection";
 
 const MySetting = () => {
   const { user } = useSelector((state) => state.profile);
-  console.log(user);
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -121,6 +122,10 @@ const MySetting = () => {
       </section>
 
       <ProfileSection />
+
+      <section className="border border-richblack-600 w-1/2 p-6 ml-10 mt-5 bg-richblack-700 rounded-xl">
+        <UpdatePassword />
+      </section>
     </div>
   );
 };

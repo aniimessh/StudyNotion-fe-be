@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import countryCode from "../../../data/countrycode.json";
 import { useState } from "react";
 import { updateProfile } from "../../../services/operations/settingAPI";
 
@@ -15,8 +14,6 @@ const ProfileSection = () => {
   });
   const dispatch = useDispatch();
 
-  console.log(formData);
-
   const handleChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -26,8 +23,7 @@ const ProfileSection = () => {
 
   const handleSubmit = async () => {
     try {
-      const result = await dispatch(updateProfile(token, formData));
-      console.log(result);
+     await dispatch(updateProfile(token, formData));
     } catch (err) {
       console.log(err.message);
     }
