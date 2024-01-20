@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { SlArrowLeft } from "react-icons/sl";
 import { useDispatch, useSelector } from "react-redux";
-import { updateDisplayPicture } from "../../../services/operations/settingAPI";
-import ProfileSection from "./ProfileSection";
-import ChangePasswordSection from "./ChangePasswordSection";
+import { updateDisplayPicture } from "../../../../services/operations/settingAPI";
+import ProfileSection from "../profile/ProfileSection";
 import UpdatePassword from "./ChangePasswordSection";
+import DeleteAccountSection from "./DeleteAccountSection";
 
 const MySetting = () => {
   const { user } = useSelector((state) => state.profile);
@@ -125,6 +125,10 @@ const MySetting = () => {
 
       <section className="border border-richblack-600 w-full p-6 mt-5 bg-richblack-700 rounded-xl">
         <UpdatePassword />
+      </section>
+
+      <section className="border border-pink-700 w-full p-6 mt-5 bg-pink-800 rounded-xl">
+        <DeleteAccountSection />
       </section>
     </div>
   );

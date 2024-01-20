@@ -10,10 +10,11 @@ import UpdatePassword from "./pages/UpdatePassword";
 import VerifyEmail from "./pages/VerifyEmail";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
-import MyProfile from "./components/core/Dashboard/MyProfile";
+import MyProfile from "./components/core/Dashboard/profile/MyProfile";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
-import MySetting from "./components/core/Dashboard/MySetting";
 import PageNotFound from "./components/common/PageNotFound";
+import MySetting from "./components/core/Dashboard/settings/MySetting";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
         />
 
         <Route path="about" element={<About />} />
+        <Route path="contact" element={<ContactUs />} />
 
         <Route
           element={
@@ -76,7 +78,7 @@ function App() {
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/settings" element={<MySetting />} />
-        <Route path="*" element={<PageNotFound />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </div>

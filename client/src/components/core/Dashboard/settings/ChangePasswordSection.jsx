@@ -1,26 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import IconButton from "../../common/IconButton";
-import { changePassword } from "../../../services/operations/settingAPI";
+import { changePassword } from "../../../../services/operations/settingAPI";
 
 export default function UpdatePassword() {
   const { token } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
-
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const submitPasswordForm = async (data) => {
-    // console.log("password Data - ", data)
     try {
       await changePassword(token, data);
     } catch (error) {

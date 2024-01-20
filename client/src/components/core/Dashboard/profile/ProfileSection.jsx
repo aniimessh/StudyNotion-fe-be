@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { updateProfile } from "../../../services/operations/settingAPI";
+import { updateProfile } from "../../../../services/operations/settingAPI";
 
 const ProfileSection = () => {
   const { user } = useSelector((state) => state.profile);
