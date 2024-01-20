@@ -30,7 +30,7 @@ const ProfileSection = () => {
   };
 
   return (
-    <section className="border border-richblack-600 w-1/2 p-6 ml-10 mt-5 bg-richblack-700 rounded-xl">
+    <section className="border border-richblack-600 w-full p-6 mt-5 bg-richblack-700 rounded-xl">
       <div>
         <p className="text-white font-inter font-semibold text-lg">
           Profile Information

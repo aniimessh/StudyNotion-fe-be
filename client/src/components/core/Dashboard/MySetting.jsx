@@ -63,7 +63,7 @@ const MySetting = () => {
   }, [imageFile]);
 
   return (
-    <div className="p-6">
+    <div className="p-6 h-full ">
       <>
         <NavLink
           to="/dashboard/my-profile"
@@ -77,7 +77,7 @@ const MySetting = () => {
         </p>
       </>
 
-      <section className="border border-richblack-600 w-1/2 p-6 ml-10 mt-5 bg-richblack-700 rounded-xl">
+      <section className="border border-richblack-600 w-full p-6 mt-5 bg-richblack-700 rounded-xl">
         <div className="flex items-center gap-x-4">
           <img
             src={`${previewSource || user?.image}`}
@@ -123,7 +123,7 @@ const MySetting = () => {
 
       <ProfileSection />
 
-      <section className="border border-richblack-600 w-1/2 p-6 ml-10 mt-5 bg-richblack-700 rounded-xl">
+      <section className="border border-richblack-600 w-full p-6 mt-5 bg-richblack-700 rounded-xl">
         <UpdatePassword />
       </section>
     </div>

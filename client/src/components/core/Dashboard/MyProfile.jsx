@@ -8,15 +8,15 @@ const MyProfile = () => {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
   return (
-    <div className="w-full">
-      <p className="font-inter text-richblack-300 font-medium p-6">
+    <div className="w-full p-6">
+      <p className="font-inter text-richblack-300 font-medium mb-4">
         Home / Dashboard / <span className="text-yellow-200">My profile</span>
       </p>
-      <h1 className="font-inter text-3xl text-white font-medium px-6">
+      <h1 className="font-inter text-3xl text-white font-medium">
         My Profile
       </h1>
 
-      <section className="border border-richblack-600 w-1/2 p-6 ml-10 mt-5 bg-richblack-700 rounded-xl flex justify-between">
+      <section className="border border-richblack-600 w-full p-6 mt-5 bg-richblack-700 rounded-xl flex justify-between">
         <div className="flex items-center gap-x-4">
           <img
             src={`${user?.image}`}
@@ -53,7 +53,7 @@ const MyProfile = () => {
         </div>
       </section> */}
 
-      <section className="border w-1/2 ml-10 mt-5 p-6 rounded-lg border-richblack-600 bg-richblack-700">
+      <section className="border w-full mt-5 p-6 rounded-lg border-richblack-600 bg-richblack-700">
         <div className="flex justify-between items-center">
           <p className="font-inter text-xl font-semibold text-white">Personal Details</p>
           <IconButton
