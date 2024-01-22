@@ -28,7 +28,13 @@ export const ExploreMore = () => {
   return (
     <div className="flex flex-col items-center ">
       <div className="text-4xl font-bold">
-        Unlock the <HightLightText text={"Power of Code"} />
+        Unlock the{" "}
+        <HightLightText
+          text={"Power of Code"}
+          startColor="from-[#1FA2FF]"
+          endColor="to-[#A6FFCB]"
+          fontbold="font-bold"
+        />
       </div>
       <p className="text-lg">Learn to Build Anything You Can Imagine</p>
 
@@ -57,10 +63,10 @@ export const ExploreMore = () => {
         {courses.map((item, index) => {
           return (
             <CourseCard
-            key={index}
-            cardData = {item}
-            currentCard = {currentCard}
-            setCurrentCard = {setCurrentCard}
+              key={index}
+              cardData={item}
+              currentCard={currentCard}
+              setCurrentCard={setCurrentCard}
             />
           );
         })}

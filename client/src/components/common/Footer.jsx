@@ -15,7 +15,7 @@ const Resource = [
   "Workspace",
 ];
 
-const FooterDetails = [" Privacy Policy |", " Cookie Policy |", " Terms "];
+const FooterDetails = ["Privacy Policy", "Cookie Policy", "Terms "];
 
 const Plans = ["Paid memberships", "For Students", "Bussiness solutions"];
 
@@ -27,7 +27,7 @@ export const Footer = () => {
   return (
     <div className="bg-richblack-700">
       <div className="w-11/12  flex mx-auto mt-10">
-        <div className="flex justify-evenly mt-10 text-white border-r-black border border-transparent w-[50%]">
+        <div className="flex justify-evenly mt-10 text-white border-r-richblack-300 border border-transparent w-[50%]">
           <div className="flex flex-col gap-2">
             <img src={StudyLogo} alt="" />
             <p className="text-xl font-bold">Company</p>
@@ -97,15 +97,11 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="w-11/12 mx-auto flex justify-between border-t border-black mt-10">
-        <div className="flex w-[50%] mt-10">
+      <div className="w-11/12 mx-auto flex justify-between border-t border-richblack-300 mt-10">
+        <div className="flex my-10 mx-auto ">
           {FooterDetails.map((item, index) => {
-            return <p className="text-white" key={index}>{item} </p>;
+            return <p className="text-white" key={index}> | {item} | </p>;
           })}
-        </div>
-        <div className="m-10 text-white">
-          <p>Made with ♥ CodeHelp © 2023 Studynotion</p>
-          <p></p>
         </div>
       </div>
     </div>

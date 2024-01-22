@@ -10,7 +10,13 @@ export const LearningLanguageSection = () => {
     <div className="mt-[150px]">
       <div className="flex flex-col gap-5 items-center">
         <div className="text-4xl font-semibold text-center">
-          Your swiss knife for <HightLightText text={"learning any language"} />
+          Your swiss knife for{" "}
+          <HightLightText
+            text={"learning any language"}
+            startColor="from-[#1FA2FF]"
+            endColor="to-[#A6FFCB]"
+            fontbold="font-semibold"
+          />
         </div>
         <div className="text-center text-black opacity-90 mx-auto text-base mt-4 w-[70%]">
           Using spin making learning multiple languages easy. with 20+ languages

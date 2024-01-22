@@ -25,9 +25,14 @@ export const Home = () => {
           </div>
         </Link>
 
-        <div className="gap-1 text-center text-4xl font-semibold mt-4">
+        <div className="text-center text-4xl font-semibold mt-4">
           Empower Your Future with
-          <HightLightText text={"Coding Skills"} />
+          <HightLightText
+            text=" Coding Skills"
+            startColor="from-[#1FA2FF]"
+            endColor="to-[#A6FFCB]"
+            fontbold="font-bold"
+          />
         </div>
 
         <div className="mt-4 text-center w-[90%] text-lg">
@@ -57,8 +62,14 @@ export const Home = () => {
             position={"lg:flex-row"}
             heading={
               <div>
-                Unlock your <HightLightText text={"coding potential"} /> with
-                our online courses.
+                Unlock your{" "}
+                <HightLightText
+                  text={"coding potential"}
+                  startColor="from-[#1FA2FF]"
+                  endColor="to-[#A6FFCB]"
+                  fontbold="font-bold"
+                />{" "}
+                with our online courses.
               </div>
             }
             subheading={
@@ -84,7 +95,13 @@ export const Home = () => {
             position={"lg:flex-row-reverse"}
             heading={
               <div>
-                Start <HightLightText text={"coding in seconds"} />
+                Start{" "}
+                <HightLightText
+                  text={"coding in seconds"}
+                  startColor="from-[#1FA2FF]"
+                  endColor="to-[#A6FFCB]"
+                  fontbold="font-bold"
+                />
               </div>
             }
             subheading={
@@ -105,7 +122,7 @@ export const Home = () => {
           />
         </div>
 
-        <ExploreMore/>
+        <ExploreMore />
       </div>
 
       {/* section 2 */}
@@ -130,7 +147,12 @@ export const Home = () => {
             <div className="text-4xl font-bold w-[70%]">
               {" "}
               Get the skills you need for a{" "}
-              <HightLightText text={"job that is in demand ."} />
+              <HightLightText
+                text={"job that is in demand."}
+                startColor="from-[#1FA2FF]"
+                endColor="to-[#A6FFCB]"
+                fontbold="font-bold"
+              />
             </div>
             <div className="flex flex-col justify-between items-start gap-10">
               <p>

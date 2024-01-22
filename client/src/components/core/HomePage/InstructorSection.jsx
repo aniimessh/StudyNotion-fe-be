@@ -13,7 +13,13 @@ export const InstructorSection = () => {
         </div>
         <div className="flex flex-col justify-center w-[39%] text-white">
           <p className="font-bold text-3xl font-inte text-white mb-4">
-            Become an <br /> <HightLightText text={"instructor"} />
+            Become an <br />{" "}
+            <HightLightText
+              text={"instructor"}
+              startColor="from-[#1FA2FF]"
+              endColor="to-[#A6FFCB]"
+              fontbold="font-bold"
+            />
           </p>
           Instructors from around the world teach millions of students on
           StudyNotion. We provide the tools and skills to teach what you love.{" "}
