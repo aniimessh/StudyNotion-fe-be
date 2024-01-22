@@ -9,6 +9,7 @@ import { ProfileDropDown } from "../core/Auth/ProfileDropDown";
 import { BsChevronDown } from "react-icons/bs";
 // import { apiConnector } from "../../services/apiconnector";
 // import { categories } from "../../services/api";
+import { FaOpencart } from "react-icons/fa";
 import axios from "axios";
 
 const subLinks = [
@@ -108,8 +109,8 @@ export const Navbar = () => {
         {/* login signup dashboard */}
         <div className="flex gap-x-5 items-center">
           {user && user?.accountType !== "Instructor" && (
-            <Link to={"/dashboard/cart"} className="relative">
-              <BsCartCheck />
+            <Link to={"/dashboard/wishlist"} className="relative">
+              <FaOpencart className="text-xl text-white mr-2"/>
               {totalItems > 0 && <span>{totalItems}</span>}
             </Link>
           )}

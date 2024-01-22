@@ -45,7 +45,7 @@ const ContactUsForm = () => {
 
   return (
     <form onSubmit={handleSubmit(submitContactForm)}>
-      <div className="w-max">
+      <div className="w-max mx-auto">
         <div className="flex justify-between gap-x-6 w-max">
           <label>
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">

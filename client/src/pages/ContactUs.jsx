@@ -68,7 +68,7 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
-        <div className="p-5">
+        <div className="px-5">
           <ContactUsForm />
         </div>
 
