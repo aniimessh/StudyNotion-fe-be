@@ -2,7 +2,9 @@ import React from 'react'
 
 const PageNotFound = () => {
   return (
-    <div className='text-white font-inter text-4xl font-bold h-[calc(100vh-6.5rem)] grid place-items-center'>404 - Page Not Found</div>
+    <div className='flex justify-center'>
+      <img src="https://cdn.pixabay.com/photo/2021/07/21/12/49/error-6482984_960_720.png" alt="" />
+    </div>
   )
 }
 

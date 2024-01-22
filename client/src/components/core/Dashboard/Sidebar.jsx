@@ -7,6 +7,7 @@ import SidebarLink from "./SidebarLink";
 import { useNavigate } from "react-router-dom";
 import { VscSignOut } from "react-icons/vsc";
 import ConfirmModal from "../../common/ConfirmModal";
+import { ACCOUNT_TYPE } from "../../../utils/constants";
 
 const Sidebar = () => {
   const [openModal, setOpenModal] = useState(null);
@@ -29,7 +30,19 @@ const Sidebar = () => {
           })}
         </div>
 
-        <div className="mx-auto h-[1px] w-10/12 bg-richblack-700"></div>
+        <div className="mx-auto h-[1px] w-10/12 bg-richblack-700 mt-2"></div>
+        {user.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+          <>
+            <p className="font-semibold text-richblack-300 font-inter ml-4 text-sm mt-2">
+              Instructor
+            </p>
+            <SidebarLink
+              item={{ name: "My Course", path: "/dashboard/my-courses" }}
+              iconName="VscVm"
+            />
+            <div className="mx-auto h-[1px] w-10/12 bg-richblack-700 mt-2"></div>
+          </>
+        )}
 
         <div className="flex flex-col mt-2">
           <SidebarLink

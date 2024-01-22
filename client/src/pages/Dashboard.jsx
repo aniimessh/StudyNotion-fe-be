@@ -14,7 +14,7 @@ const Dashboard = () => {
   return (
     <div className="flex min-h-[calc(100vh-3.5rem)] relative">
       <Sidebar />
-        <div className="mx-auto w-1/2 py-5 px-2">
+        <div className="w-full px-2">
           <Outlet />
         </div>
     </div>

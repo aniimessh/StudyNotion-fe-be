@@ -63,7 +63,7 @@ const MySetting = () => {
   }, [imageFile]);
 
   return (
-    <div className="p-6 h-full ">
+    <div className="p-6 w-1/2 ">
       <>
         <NavLink
           to="/dashboard/my-profile"

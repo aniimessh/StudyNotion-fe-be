@@ -8,7 +8,7 @@ const MyProfile = () => {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
   return (
-    <div className="w-full p-6">
+    <div className="w-1/2 p-6">
       <p className="font-inter text-richblack-300 font-medium mb-4">
         Home / Dashboard / <span className="text-yellow-200">My profile</span>
       </p>
@@ -16,7 +16,7 @@ const MyProfile = () => {
         My Profile
       </h1>
 
-      <section className="border border-richblack-600 w-full p-6 mt-5 bg-richblack-700 rounded-xl flex justify-between">
+      <section className="border border-richblack-600 p-6 mt-5 bg-richblack-700 rounded-xl flex justify-between">
         <div className="flex items-center gap-x-4">
           <img
             src={`${user?.image}`}
