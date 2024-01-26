@@ -169,6 +169,17 @@ const CourseInformationForm = () => {
           <span>Course Benefits is Required*</span>
         )}
       </div>
+
+      <div>
+        <RequirementField 
+        name="courseRequirements"
+        label="Requiremnts/Instrucions"
+        register={register}
+        errors={errors}
+        setValue={setValue}
+        getValues={getValues}
+        />
+      </div>
     </form>
   );
 };
