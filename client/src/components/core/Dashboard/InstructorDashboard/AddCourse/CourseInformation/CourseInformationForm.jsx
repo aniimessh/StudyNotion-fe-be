@@ -197,7 +197,7 @@ const CourseInformationForm = () => {
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
           className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
-          {...register("courseTitle", { required: true })}
+          {...register("coursePrice", { required: true })}
         />
         <HiOutlineCurrencyRupee className="absolute top-1/2" />
         {errors.coursePrice && <span>Course Price is Required*</span>}
