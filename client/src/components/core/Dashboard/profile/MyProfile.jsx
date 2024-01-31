@@ -16,7 +16,7 @@ const MyProfile = () => {
         My Profile
       </h1>
 
-      <section className="border border-richblack-600 p-6 mt-5 bg-richblack-700 rounded-xl flex justify-between">
+      <section className="border border-richblack-600 p-6 mt-5 bg-richblack-700 rounded-xl flex justify-between items-start">
         <div className="flex items-center gap-x-4">
           <img
             src={`${user?.image}`}
@@ -35,7 +35,7 @@ const MyProfile = () => {
         <IconButton
           text="Edit"
           onclick={() => navigate("/dashboard/settings")}
-        />
+         />
       </section>
 
       {/* <section>

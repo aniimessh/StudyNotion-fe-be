@@ -149,7 +149,7 @@ const CourseInformationForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-md border border-richblack-900 p-6 space-y-6 bg-richblack-700"
+      className="rounded-md border border-richblack-500 p-6 space-y-6 bg-richblack-700"
     >
       <div>
         <label>
