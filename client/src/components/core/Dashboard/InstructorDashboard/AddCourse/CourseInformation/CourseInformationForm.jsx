@@ -70,7 +70,11 @@ const CourseInformationForm = () => {
     }
   };
 
+  const currentValues = getValues();
+  console.log(currentValues);
+
   const onSubmit = async (data) => {
+    console.log(data);
     if (editCourse) {
       if (isFormUpdated()) {
         const currentValues = getValues();
@@ -125,7 +129,7 @@ const CourseInformationForm = () => {
 
     const formData = new FormData();
     formData.append("courseName", data.courseTitle);
-    formData.append("courseDescription", data.courseShortDesc);
+    formData.append("courseDescription", data.courseDescription);
     formData.append("price", data.coursePrice);
     formData.append("tag", JSON.stringify(data.courseTags));
     formData.append("whatYouWillLearn", data.courseBenefits);
