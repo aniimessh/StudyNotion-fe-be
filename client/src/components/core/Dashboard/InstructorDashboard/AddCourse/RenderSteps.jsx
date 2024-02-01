@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { FaCircleCheck } from "react-icons/fa6";
 import CourseInformationForm from "./CourseInformation/CourseInformationForm";
 import CourseBuilderForm from "./CourseBuilder/CourseBuilderForm";
+import PublishForm from "./PublishForm/PublishForm";
 
 const RenderSteps = () => {
   const { step } = useSelector((state) => state.course);
@@ -20,7 +21,7 @@ const RenderSteps = () => {
     },
   ];
   return (
-    <div className="w-8/12 mx-auto">
+    <div className="w-8/12">
       <div className="relative mb-2 flex w-full justify-between">
         {steps.map((item) => {
           return (
@@ -64,7 +65,7 @@ const RenderSteps = () => {
       </div>
       {step === 1 && <CourseInformationForm />}
       {step === 2 && <CourseBuilderForm />}
-      {/* {step === 3 && <PublishForm />} */}
+      {step === 3 && <PublishForm />}
     </div>
   );
 };

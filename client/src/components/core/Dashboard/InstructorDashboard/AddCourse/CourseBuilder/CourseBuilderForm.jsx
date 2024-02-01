@@ -92,18 +92,15 @@ const CourseBuilderForm = () => {
 
   return (
     <div className="rounded-md border border-richblack-500 p-6 space-y-6 bg-richblack-700">
-      <form
-        action=""
-        onSubmit={handleSubmit(onSubmit)}
-        
-      >
+      <p className="text-2xl font-semibold text-white font-inter">
+        Course Builder
+      </p>
+      {course?.courseContent?.length > 0 && (
+        <NestedView handleChangeEditSectionName={handleChangeEditSectionName} />
+      )}
+      <form action="" onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label
-            htmlFor=""
-            className="text-2xl font-semibold text-white font-inter"
-          >
-            Course Builder
-          </label>
+          <label htmlFor=""></label>
           <input
             type="text"
             id="sectionName"
@@ -141,9 +138,6 @@ const CourseBuilderForm = () => {
         </div>
       </form>
 
-      {course?.courseContent?.length > 0 && (
-        <NestedView handleChangeEditSectionName={handleChangeEditSectionName} />
-      )}
       <div className="flex gap-x-6 mt-5">
         <button
           onClick={goBack}

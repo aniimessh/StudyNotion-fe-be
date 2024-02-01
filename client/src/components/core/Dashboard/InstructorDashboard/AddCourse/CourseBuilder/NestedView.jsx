@@ -59,7 +59,7 @@ const NestedView = ({ handleChangeEditSectionName }) => {
             <summary className="flex  cursor-pointer justify-between border-b border-richblack-500 py-4">
               <div className="flex gap-x-3 items-center">
                 <MdOutlineFilterList className={`text-xl text-richblack-300`} />{" "}
-                <p className="text-richblack-200 font-inter">
+                <p className="text-richblack-50 font-semibold font-inter">
                   {section.sectionName}
                 </p>
               </div>
