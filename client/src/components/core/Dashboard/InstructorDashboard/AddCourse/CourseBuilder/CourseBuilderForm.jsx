@@ -71,6 +71,7 @@ const CourseBuilderForm = () => {
         token
       );
     }
+    console.log(result);
     if (result) {
       dispatch(setCourse(result));
       setEditSectionName(null);
@@ -140,7 +141,7 @@ const CourseBuilderForm = () => {
         </div>
       </form>
 
-      {course.courseContent.length > 0 && (
+      {course?.courseContent?.length > 0 && (
         <NestedView handleChangeEditSectionName={handleChangeEditSectionName} />
       )}
       <div className="flex gap-x-6 mt-5">
