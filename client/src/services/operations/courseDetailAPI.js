@@ -174,7 +174,7 @@ export const updateSection = async (data, token) => {
   let result = null;
   const toastId = toast.loading("Loading...");
   try {
-    const response = await apiConnector("POST", UPDATE_SECTION_API, data, {
+    const response = await apiConnector("PUT", UPDATE_SECTION_API, data, {
       Authorization: `Bearer ${token}`,
     });
     console.log("UPDATE SECTION API RESPONSE............", response);

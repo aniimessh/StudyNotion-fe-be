@@ -12,6 +12,7 @@ import {
 import { toast } from "react-hot-toast";
 import {
   createSection,
+  updateSection,
   updateSubSection,
 } from "../../../../../../services/operations/courseDetailAPI";
 import NestedView from "./NestedView";
@@ -53,7 +54,7 @@ const CourseBuilderForm = () => {
     setLoading(true);
     let result;
     if (editSectionName) {
-      result = await updateSubSection(
+      result = await updateSection(
         {
           sectionName: data.sectionName,
           sectionId: editSectionName,
@@ -70,7 +71,6 @@ const CourseBuilderForm = () => {
         token
       );
     }
-    console.log(result);
     if (result) {
       dispatch(setCourse(result));
       setEditSectionName(null);
