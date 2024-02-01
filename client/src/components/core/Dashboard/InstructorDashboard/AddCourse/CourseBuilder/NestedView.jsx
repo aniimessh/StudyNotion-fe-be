@@ -3,6 +3,7 @@ import { RxDropdownMenu } from "react-icons/rx";
 import { MdDelete, MdEdit } from "react-icons/md";
 import ConfirmModal from "../../../../../common/ConfirmModal";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useState } from "react";
 
 const NestedView = ({ handleChangeEditSectionName }) => {
   const { course } = useSelector((state) => state.course);
