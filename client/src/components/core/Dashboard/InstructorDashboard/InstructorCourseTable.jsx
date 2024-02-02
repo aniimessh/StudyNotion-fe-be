@@ -8,23 +8,26 @@ import { FaRegClock } from "react-icons/fa6";
 import { HiPencil } from "react-icons/hi2";
 import { FaTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import ConfirmModal from "../../../common/ConfirmModal";
+import { setCourse } from "../../../../slices/courseSlice";
 
-const InstructorCourseTable = () => {
+const InstructorCourseTable = ({ courses, setCourses }) => {
   const { token } = useSelector((state) => state.auth);
-  const [instructorCourse, setInstructorCourse] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [confirmationModal, setConfirmationModal] = useState(null);
   const navigate = useNavigate();
-  const getInstructorCourse = async () => {
-    try {
-      const courses = await fetchInstructorCourses(token);
-      setInstructorCourse(courses);
-    } catch (err) {
-      console.log(err.message);
+
+  const handleCourseDelete = async (courseId) => {
+    setLoading(true);
+    await deleteCourse({ courseId: courseId }, token);
+    const result = await fetchInstructorCourses(token);
+    if (result) {
+      setCourses(result);
     }
+    setConfirmationModal(null);
+    setLoading(false);
   };
 
-  useEffect(() => {
-    getInstructorCourse();
-  }, []);
   return (
     <div className=" border rounded-lg border-richblack-500 mt-6">
       <table className="w-full">
@@ -40,9 +43,9 @@ const InstructorCourseTable = () => {
         <th className="p-4 text-richblack-300 font-inter text-sm font-medium border-b border-richblack-500">
           <td>ACTION</td>
         </th>
-        {instructorCourse.length > 0 ? (
+        {courses.length > 0 ? (
           <>
-            {instructorCourse.map((course, index) => {
+            {courses.map((course, index) => {
               return (
                 <>
                   <tr key={index}>
@@ -83,9 +86,21 @@ const InstructorCourseTable = () => {
                           <HiPencil className="text-richblack-300 w-max" />
                         </button>
                         <button
-                          onClick={() =>
-                            deleteCourse({ courseId: course._id }, token)
-                          }
+                          onClick={() => {
+                            setConfirmationModal({
+                              text1: "Do you want to delete this course?",
+                              text2:
+                                "All the data related to this course will be deleted",
+                              btn1text: !loading ? "Delete" : "Loading...  ",
+                              btn2text: "Cancel",
+                              btn1handler: !loading
+                                ? () => handleCourseDelete(course._id)
+                                : () => {},
+                              btn2handler: !loading
+                                ? () => setConfirmationModal(null)
+                                : () => {},
+                            });
+                          }}
                         >
                           <FaTrashAlt className="text-richblack-300 w-max" />
                         </button>
@@ -106,6 +121,7 @@ const InstructorCourseTable = () => {
           </>
         )}
       </table>
+      {confirmationModal && <ConfirmModal modalData={confirmationModal} />}
     </div>
   );
 };
