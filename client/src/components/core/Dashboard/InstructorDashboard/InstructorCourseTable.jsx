@@ -10,8 +10,10 @@ import { FaTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import ConfirmModal from "../../../common/ConfirmModal";
 import { setCourse } from "../../../../slices/courseSlice";
+import { COURSE_STATUS } from "../../../../utils/constants";
 
 const InstructorCourseTable = ({ courses, setCourses }) => {
+  console.log(courses);
   const { token } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [confirmationModal, setConfirmationModal] = useState(null);
@@ -66,8 +68,14 @@ const InstructorCourseTable = ({ courses, setCourses }) => {
                         <p className="text-richblack-100 font-inter text-sm font-normal">
                           Created at {course?.createdAt}
                         </p>
-                        {course?.status === "Draft" && (
+                        {course?.status === COURSE_STATUS.DRAFT && (
                           <p className="text-pink-100 bg-pink-400 w-max rounded-full px-2 py-1 font-inter font-medium text-xs flex gap-x-1  items-center">
+                            <FaRegClock />
+                            {course?.status}
+                          </p>
+                        )}
+                        {course?.status === COURSE_STATUS.PUBLISHED && (
+                          <p className="text-yellow-100 bg-yellow-400 w-max rounded-full px-2 py-1 font-inter font-medium text-xs flex gap-x-1  items-center">
                             <FaRegClock />
                             {course?.status}
                           </p>

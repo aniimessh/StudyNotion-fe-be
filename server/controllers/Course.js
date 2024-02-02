@@ -153,6 +153,7 @@ exports.editCourse = async (req, res) => {
         }
       }
     }
+    await course.save();
 
     console.log("hii");
     const updatedCourse = await Course.findOne({
@@ -173,7 +174,7 @@ exports.editCourse = async (req, res) => {
         },
       })
       .exec();
-    console.log("first");
+    console.log(updatedCourse );
     res.json({
       success: true,
       message: "Course updated successfully",
