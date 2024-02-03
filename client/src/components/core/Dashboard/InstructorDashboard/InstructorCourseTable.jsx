@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import ConfirmModal from "../../../common/ConfirmModal";
 import { setCourse } from "../../../../slices/courseSlice";
 import { COURSE_STATUS } from "../../../../utils/constants";
+import { FaCircleCheck } from "react-icons/fa6";
 
 const InstructorCourseTable = ({ courses, setCourses }) => {
   console.log(courses);
@@ -66,7 +67,11 @@ const InstructorCourseTable = ({ courses, setCourses }) => {
                           {course?.courseDescription}
                         </p>
                         <p className="text-richblack-100 font-inter text-sm font-normal">
-                          Created at {course?.createdAt}
+                          Created at {new Date(course?.createdAt).toLocaleString('en-US',{
+                            year:"numeric",
+                            month:"short",
+                            day: "numeric"
+                          })}
                         </p>
                         {course?.status === COURSE_STATUS.DRAFT && (
                           <p className="text-pink-100 bg-pink-400 w-max rounded-full px-2 py-1 font-inter font-medium text-xs flex gap-x-1  items-center">
@@ -75,8 +80,8 @@ const InstructorCourseTable = ({ courses, setCourses }) => {
                           </p>
                         )}
                         {course?.status === COURSE_STATUS.PUBLISHED && (
-                          <p className="text-yellow-100 bg-yellow-400 w-max rounded-full px-2 py-1 font-inter font-medium text-xs flex gap-x-1  items-center">
-                            <FaRegClock />
+                          <p className="text-yellow-100 bg-richblack-700 w-max rounded-full px-2 py-1 font-inter font-medium text-xs flex gap-x-1  items-center">
+                            <FaCircleCheck />
                             {course?.status}
                           </p>
                         )}
