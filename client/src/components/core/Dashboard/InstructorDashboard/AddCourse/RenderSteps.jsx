@@ -17,7 +17,9 @@ const RenderSteps = () => {
     },
     {
       id: 3,
-      title: "Publish",
+      title: (
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Publish</p>
+      ),
     },
   ];
   return (
@@ -26,7 +28,7 @@ const RenderSteps = () => {
         {steps.map((item) => {
           return (
             <>
-              <div key={item.id} className="flex flex-col items-center ">
+              <div key={item.id} className="">
                 <button
                   className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${
                     step === item.id
@@ -56,8 +58,8 @@ const RenderSteps = () => {
         {steps.map((item) => {
           return (
             <>
-              <div>
-                <p>{item.title}</p>
+              <div >
+                <p className={`${step === item.id ? "text-white" : "text-richblack-300"} text-sm font-inter`}>{item.title}</p>
               </div>
             </>
           );
