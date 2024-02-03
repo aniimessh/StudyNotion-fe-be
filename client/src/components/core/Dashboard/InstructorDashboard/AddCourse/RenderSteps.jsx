@@ -18,13 +18,13 @@ const RenderSteps = () => {
     {
       id: 3,
       title: (
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Publish</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Publish&nbsp;&nbsp;&nbsp;&nbsp;</p>
       ),
     },
   ];
   return (
     <div className="w-8/12">
-      <div className="relative mb-2 flex w-full justify-between">
+      <div className="relative mb-2 flex w-9/12 mx-auto justify-between">
         {steps.map((item) => {
           return (
             <>
@@ -33,7 +33,7 @@ const RenderSteps = () => {
                   className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${
                     step === item.id
                       ? "border-yellow-50 bg-yellow-900 text-yellow-50"
-                      : "border-richblack-700 bg-richblack-800 text-richblack-300"
+                      : "border-richblack-600 bg-richblack-700 text-richblack-300"
                   } ${step > item.id && "bg-yellow-50 text-yellow-50"}} `}
                 >
                   {step > item.id ? <FaCircleCheck /> : item.id}
@@ -54,7 +54,7 @@ const RenderSteps = () => {
           );
         })}
       </div>
-      <div className="relative mb-5 flex w-full select-none justify-between">
+      <div className="relative mb-5 flex select-none justify-between w-4/5 mx-auto">
         {steps.map((item) => {
           return (
             <>

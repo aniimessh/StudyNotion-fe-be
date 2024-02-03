@@ -40,7 +40,7 @@ function RequirementField({
   };
   return (
     <div className="flex flex-col space-y-2">
-      <label className="text-sm text-richblack-5" htmlFor={name}>
+      <label className="text-sm text-richblack-5 font-inter" htmlFor={name}>
         {label} <sup className="text-pink-200">*</sup>
       </label>
       <div className="flex flex-col items-start space-y-2">
@@ -52,8 +52,13 @@ function RequirementField({
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 outline-none"
         />
+          {errors[name] && (
+            <span className="text-xs tracking-wide text-pink-200">
+              {label} is required
+            </span>
+          )}
         <button
           type="button"
           onClick={handleAddRequirement}
@@ -77,11 +82,6 @@ function RequirementField({
             </li>
           ))}
         </ul>
-      )}
-      {errors[name] && (
-        <span className="ml-2 text-xs tracking-wide text-pink-200">
-          {label} is required
-        </span>
       )}
     </div>
   );

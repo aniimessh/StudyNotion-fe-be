@@ -2,7 +2,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { addCourseDetails, editCourseDetails, fetchCourseCategories } from "../../../../../../services/operations/courseDetailAPI";
+import {
+  addCourseDetails,
+  editCourseDetails,
+  fetchCourseCategories,
+} from "../../../../../../services/operations/courseDetailAPI";
 import { HiOutlineCurrencyRupee } from "react-icons/hi2";
 import ChipInput from "./ChipInput";
 import Upload from "../Upload";
@@ -14,7 +18,7 @@ import { COURSE_STATUS } from "../../../../../../utils/constants";
 
 const CourseInformationForm = () => {
   const { course, editCourse } = useSelector((state) => state.course);
-  const {token} = useSelector(state => state.auth);
+  const { token } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [courseCategory, setCourseCategory] = useState([]);
 
@@ -61,11 +65,12 @@ const CourseInformationForm = () => {
       currentValues.courseTags.toString() !== course.tag.toString() ||
       currentValues.courseBenefits !== course.whatYouWIllLearn ||
       currentValues.courseCategory._id !== course.category._id ||
-      currentValues.courseRequirement.toString() !== course.instructions.toString() ||
+      currentValues.courseRequirement.toString() !==
+        course.instructions.toString() ||
       currentValues.courseImage !== course.thumbnail
     ) {
       return true;
-    }else{
+    } else {
       return false;
     }
   };
@@ -152,8 +157,8 @@ const CourseInformationForm = () => {
       className="rounded-md border border-richblack-500 p-6 space-y-6 bg-richblack-700"
     >
       <div>
-        <label>
-          Course Title<sup>*</sup>
+        <label className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 font-inter">
+          Course Title<sup className="text-pink-200">*</sup>
         </label>
         <input
           type="text"
@@ -162,36 +167,36 @@ const CourseInformationForm = () => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 placeholder:font-inter outline-none"
           {...register("courseTitle", { required: true })}
         />
-        {errors.courseTitle && <span>Course Title is Required*</span>}
+        {errors.courseTitle && <span className="text-xs tracking-wide text-pink-200">Course Title is Required*</span>}
       </div>
 
       <div>
-        <label>
-          Course Description<sup>*</sup>
+        <label className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 font-inter">
+          Course Short Description<sup className="text-pink-200">*</sup>
         </label>
         <textarea
           name="courseDescription"
           id="courseDescription"
           cols="30"
-          rows="10"
+          rows="5"
           placeholder="Enter Description"
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 placeholder:font-inter outline-none"
           {...register("courseDescription", { required: true })}
         />
         {errors.courseDescription && (
-          <span>Course Description is Required*</span>
+          <span className="text-xs tracking-wide text-pink-200">Course Description is Required*</span>
         )}
       </div>
 
-      <div className=" relative">
+      <div className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 font-inter relative">
         <label>
-          Course Price<sup>*</sup>
+          Course Price<sup className="text-pink-200">*</sup>
         </label>
         <input
           type="text"
@@ -200,16 +205,16 @@ const CourseInformationForm = () => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 pl-8 outline-none"
           {...register("coursePrice", { required: true })}
         />
-        <HiOutlineCurrencyRupee className="absolute top-1/2" />
-        {errors.coursePrice && <span>Course Price is Required*</span>}
+        <HiOutlineCurrencyRupee className="absolute top-7 text-3xl text-richblack-300" />
+        {errors.coursePrice && <span className="text-xs tracking-wide text-pink-200">Course Price is Required*</span>}
       </div>
 
       <div>
-        <label htmlFor="">
-          Course Category <sup>*</sup>
+        <label htmlFor=""  className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 font-inter">
+          Course Category<sup className="text-pink-200">*</sup>
         </label>
         <select
           name=""
@@ -217,22 +222,22 @@ const CourseInformationForm = () => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 outline-none font-inter"
           {...register("courseCategory", { required: true })}
         >
-          <option value="" disabled defaultChecked>
+          <option value="" className="font-inter">
             Choose a Category
           </option>
           {!loading &&
             courseCategory.map((item, index) => {
               return (
-                <option value={item._id} key={index}>
+                <option value={item._id} key={index} className="font-inter">
                   {item?.name}
                 </option>
               );
             })}
         </select>
-        {errors.courseCategory && <span>Course Category is Required*</span>}
+        {errors.courseCategory && <span className="text-xs tracking-wide text-pink-200">Course Category is Required*</span>}
       </div>
 
       <div>
@@ -259,8 +264,8 @@ const CourseInformationForm = () => {
       </div>
 
       <div>
-        <label>
-          Course Benefits<sup>*</sup>
+        <label className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5 font-inter">
+          Course Benefits<sup className="text-pink-200">*</sup>
         </label>
         <textarea
           name="courseBenefits"
@@ -271,10 +276,10 @@ const CourseInformationForm = () => {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+          className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 outline-none"
           {...register("courseBenefits", { required: true })}
         />
-        {errors.courseBenefits && <span>Course Benefits is Required*</span>}
+        {errors.courseBenefits && <span className="text-xs tracking-wide text-pink-200">Course Benefits is Required*</span>}
       </div>
       <div>
         <RequirementField
