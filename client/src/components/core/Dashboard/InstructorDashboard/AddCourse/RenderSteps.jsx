@@ -36,7 +36,7 @@ const RenderSteps = () => {
                       : "border-richblack-600 bg-richblack-700 text-richblack-300"
                   } ${step > item.id && "bg-yellow-50 text-yellow-50"}} `}
                 >
-                  {step > item.id ? <FaCircleCheck /> : item.id}
+                  {step > item.id ? <FaCircleCheck className="text-3xl text-richblack-800"/> : item.id}
                 </button>
               </div>
               {item.id !== steps.length && (

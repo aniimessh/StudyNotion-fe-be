@@ -16,6 +16,7 @@ import {
   updateSubSection,
 } from "../../../../../../services/operations/courseDetailAPI";
 import NestedView from "./NestedView";
+import { CgAdd } from "react-icons/cg";
 
 const CourseBuilderForm = () => {
   const [editSectionName, setEditSectionName] = useState(false);
@@ -104,14 +105,14 @@ const CourseBuilderForm = () => {
           <input
             type="text"
             id="sectionName"
-            placeholder="Add section name"
+            placeholder="Add a section to build your course"
             {...register("sectionName", { required: true })}
             style={{
               boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
             }}
-            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 font-inter outline-none placeholder:font-inter"
           />
-          {errors.sectionName && <span>Section name is required</span>}
+          {errors.sectionName && <span className="text-xs tracking-wide text-pink-200">Section name is required</span>}
         </div>
 
         <div className="flex gap-x-6 mt-2">
@@ -121,7 +122,7 @@ const CourseBuilderForm = () => {
             customClasses="text-yellow-50"
             text={editSectionName ? "Edit section name" : "Create section"}
           >
-            <VscAdd />
+            <CgAdd className="text-xl"/>
           </IconButton>
           {editSectionName && (
             <button

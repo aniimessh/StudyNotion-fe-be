@@ -71,13 +71,13 @@ const SubSectionModal = ({
 
     setLoading(true);
     const result = await updateSubSection(formData, token);
-    console.log(result)
+    console.log(result);
     if (result) {
       const updatedCourseContent = course.courseContent.map((section) =>
         section._id === modalData.sectionId ? result : section
       );
       const updatedCourse = { ...course, courseContent: updatedCourseContent };
-      console.log(updatedCourseContent)
+      console.log(updatedCourseContent);
       dispatch(setCourse(updatedCourse));
     }
     setModalData(null);
@@ -115,9 +115,9 @@ const SubSectionModal = ({
 
   return (
     <div className="fixed inset-0 z-[1000] !mt-0 grid w-screen place-items-center backdrop-blur-3xl backdrop-opacity-70">
-      <div className="w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-richblack-800">
+      <div className="w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-richblack-700">
         {/* Modal Header */}
-        <div className="flex items-center justify-between rounded-t-lg bg-richblack-700 p-5">
+        <div className="flex items-center justify-between rounded-t-lg bg-richblack-600 p-5">
           <p className="text-xl font-semibold text-richblack-5 font-inter">
             {view && "Viewing"} {add && "Adding"} {edit && "Editing"} Lecture
           </p>
@@ -161,6 +161,69 @@ const SubSectionModal = ({
                 Lecture title is required
               </span>
             )}
+          </div>
+          {/* Video Playback Time */}
+          <div className="flex flex-col space-y-2">
+            <label className="text-sm text-richblack-5" htmlFor="lectureTitle">
+              Video Playback Time{" "}
+              {!view && <sup className="text-pink-200">*</sup>}
+            </label>
+            <div className="flex justify-between gap-x-6">
+              <>
+                <input
+                  type="number"
+                  disabled={view || loading}
+                  id="lectureHour"
+                  placeholder="HH"
+                  {...register("lectureHour", { required: true })}
+                  style={{
+                    boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                  }}
+                  className="rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 w-[33.3%]"
+                />
+                {errors.lectureHour && (
+                  <span className="ml-2 text-xs tracking-wide text-pink-200">
+                    Lecture hour is required
+                  </span>
+                )}
+              </>
+              <>
+                <input
+                  type="number"
+                  disabled={view || loading}
+                  id="lectureMinute"
+                  placeholder="MM"
+                  {...register("lectureMinute", { required: true })}
+                  style={{
+                    boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                  }}
+                  className="rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 w-[33.3%]"
+                />
+                {errors.lectureMinute && (
+                  <span className="ml-2 text-xs tracking-wide text-pink-200">
+                    Lecture minute is required
+                  </span>
+                )}
+              </>
+              <>
+                <input
+                  type="number"
+                  disabled={view || loading}
+                  id="lectureSecond"
+                  placeholder="SS"
+                  {...register("lectureSecond", { required: true })}
+                  style={{
+                    boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                  }}
+                  className="rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 w-[33.3%]"
+                />
+                {errors.lectureSecond && (
+                  <span className="ml-2 text-xs tracking-wide text-pink-200">
+                    Lecture second is required
+                  </span>
+                )}
+              </>
+            </div>
           </div>
           {/* Lecture Description */}
           <div className="flex flex-col space-y-2">
