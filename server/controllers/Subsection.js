@@ -9,13 +9,13 @@ require("dotenv").config();
 exports.createSubSection = async (req, res) => {
   try {
     // Extract necessary information from the request body
-    const { sectionId, title, description } = req.body;
+    const { sectionId, title, description, lectureHour, lectureMinute, lectureSecond } = req.body;
     const video = req.files.video;
 
     console.log(video);
 
     // Check if all necessary fields are provided
-    if (!sectionId || !title || !description || !video) {
+    if (!sectionId || !title || !description || !video || !lectureHour || !lectureMinute || !lectureSecond) {
       return res
         .status(404)
         .json({ success: false, message: "All fields are required" });
@@ -33,6 +33,9 @@ exports.createSubSection = async (req, res) => {
       timeDuration: `${uploadDetails.duration}`,
       description: description,
       videoUrl: uploadDetails.secure_url,
+      lectureHour: lectureHour, 
+      lectureMinute: lectureMinute, 
+      lectureSecond: lectureSecond
     });
 
     console.log("Subsection Id: ", SubSectionDetails._id);

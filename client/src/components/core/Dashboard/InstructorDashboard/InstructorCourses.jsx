@@ -17,7 +17,6 @@ const InstructorCourses = () => {
       }
     }
     fetchCourses()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className="p-6">
