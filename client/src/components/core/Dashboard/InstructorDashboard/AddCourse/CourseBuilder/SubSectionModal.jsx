@@ -99,6 +99,9 @@ const SubSectionModal = ({
     formData.append("title", data.lectureTitle);
     formData.append("description", data.lectureDesc);
     formData.append("video", data.lectureVideo);
+    formData.append("lectureHour", data.lectureHour);
+    formData.append("lectureMinute", data.lectureMinute);
+    formData.append("lectureSecond", data.lectureSecond)
 
     setLoading(true);
     const result = await createSubSection(formData, token);
@@ -168,8 +171,8 @@ const SubSectionModal = ({
               Video Playback Time{" "}
               {!view && <sup className="text-pink-200">*</sup>}
             </label>
-            <div className="flex justify-between gap-x-6">
-              <>
+            <div className="flex gap-x-6">
+              <div className="flex flex-col">
                 <input
                   type="number"
                   disabled={view || loading}
@@ -179,15 +182,15 @@ const SubSectionModal = ({
                   style={{
                     boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                   }}
-                  className="rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 w-[33.3%]"
+                  className="rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 w-full"
                 />
                 {errors.lectureHour && (
                   <span className="ml-2 text-xs tracking-wide text-pink-200">
                     Lecture hour is required
                   </span>
                 )}
-              </>
-              <>
+              </div>
+              <div className="flex flex-col">
                 <input
                   type="number"
                   disabled={view || loading}
@@ -197,15 +200,15 @@ const SubSectionModal = ({
                   style={{
                     boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                   }}
-                  className="rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 w-[33.3%]"
+                  className="rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 w-full"
                 />
                 {errors.lectureMinute && (
                   <span className="ml-2 text-xs tracking-wide text-pink-200">
                     Lecture minute is required
                   </span>
                 )}
-              </>
-              <>
+              </div>
+              <div className="flex flex-col">
                 <input
                   type="number"
                   disabled={view || loading}
@@ -215,14 +218,14 @@ const SubSectionModal = ({
                   style={{
                     boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                   }}
-                  className="rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 w-[33.3%]"
+                  className="rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 w-full"
                 />
                 {errors.lectureSecond && (
                   <span className="ml-2 text-xs tracking-wide text-pink-200">
                     Lecture second is required
                   </span>
                 )}
-              </>
+              </div>
             </div>
           </div>
           {/* Lecture Description */}
