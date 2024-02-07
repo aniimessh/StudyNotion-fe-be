@@ -1,5 +1,9 @@
 const Category = require("../models/Category");
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max)
+}
+
 exports.createCategory = async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -54,9 +58,11 @@ exports.categoryPageDetails = async (req, res) => {
       .populate({
         path: "courses",
         match: { status: "Published" },
-        populate: "ratingAndReviews",
+        populate: "ratingAndReview",
       })
       .exec()
+
+      console.log("===>", selectedCategory)
 
     //console.log("SELECTED COURSE", selectedCategory)
     // Handle the case when the category is not found
