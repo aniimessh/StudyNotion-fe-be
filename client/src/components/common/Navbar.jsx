@@ -51,7 +51,7 @@ const  Navbar = () => {
         </Link>
         {/* Navigation links */}
         <nav className="hidden md:block">
-          <ul className="flex gap-x-6 text-richblack-25">
+          <ul className="flex gap-x-6 text-richblack-25 font-inter">
             {NavbarLinks.map((link, index) => (
               <li key={index}>
                 {link.title === "Catalog" ? (
@@ -59,7 +59,7 @@ const  Navbar = () => {
                     <div
                       className={`group relative flex cursor-pointer items-center gap-1 ${
                         matchRoute("/catalog/:catalogName")
-                          ? "text-yellow-25"
+                          ? "text-yellow-25 font-semibold"
                           : "text-richblack-25"
                       }`}
                     >
@@ -77,7 +77,7 @@ const  Navbar = () => {
                                     .split(" ")
                                     .join("-")
                                     .toLowerCase()}`}
-                                  className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
+                                  className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50 font-inter"
                                   key={i}
                                 >
                                   <p>{subLink.name}</p>
@@ -95,9 +95,9 @@ const  Navbar = () => {
                     <p
                       className={`${
                         matchRoute(link?.path)
-                          ? "text-yellow-25"
+                          ? "text-yellow-25 font-semibold"
                           : "text-richblack-25"
-                      }`}
+                      } font-inter`}
                     >
                       {link.title}
                     </p>
