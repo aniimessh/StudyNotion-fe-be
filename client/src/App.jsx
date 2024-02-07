@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Home } from "./pages/Home";
-import { Navbar } from "./components/common/Navbar";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import OpenRoute from "./components/core/Auth/OpenRoute";
@@ -21,6 +20,8 @@ import { useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import InstructorCourses from "./components/core/Dashboard/InstructorDashboard/InstructorCourses";
 import AddCourse from "./components/core/Dashboard/InstructorDashboard/AddCourse";
+import Navbar from "./components/common/Navbar";
+import Catalog from "./pages/Catalog";
 
 function App() {
   const { user } = useSelector((state) => state.profile);
@@ -29,6 +30,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="catalog/:catalogName" element={<Catalog />} />
         <Route
           path="signup"
           element={
@@ -101,10 +103,7 @@ function App() {
                 path="dashboard/my-courses"
                 element={<InstructorCourses />}
               />
-              <Route
-                path="dashboard/add-course"
-                element={<AddCourse />}
-              />
+              <Route path="dashboard/add-course" element={<AddCourse />} />
             </>
           )}
         </Route>

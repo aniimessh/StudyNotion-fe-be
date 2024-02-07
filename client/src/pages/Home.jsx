@@ -15,9 +15,9 @@ export const Home = () => {
   return (
     <div>
       {/* section 1 */}
-      <div className="relative mx-auto max-w-maxContent flex flex-col w-11/12 items-center text-white justify-between">
-        <Link to={"/signup"}>
-          <div className="mt-16 p-1 mx-auto rounded-full bg-richblack-700 font-normal transition-all duration-200 hover:scale-95 w-fit shadow-[2px_2px_0px_0px_#1a202c]">
+      <div className="mx-auto max-w-maxContent flex flex-col w-11/12 items-center text-white justify-between">
+        <Link to={"/signup"} className="mt-16">
+          <div className="p-1 mx-auto rounded-full bg-richblack-700 font-normal transition-all duration-200 hover:scale-95 w-fit shadow-[2px_2px_0px_0px_#1a202c]">
             <div className="flex items-center gap-2 rounded-full px-10 py-[5px] transition-all duration-200 ">
               <p>Become and Instructor </p>
               <AiOutlineArrowRight />
@@ -121,9 +121,8 @@ export const Home = () => {
             codeColor={"text-[#E6C229]"}
           />
         </div>
-
-        <ExploreMore />
       </div>
+      <ExploreMore />
 
       {/* section 2 */}
       <div className="bg-white">

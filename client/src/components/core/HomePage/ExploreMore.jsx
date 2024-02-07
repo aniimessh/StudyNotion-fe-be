@@ -55,21 +55,21 @@ export const ExploreMore = () => {
           );
         })}
       </div>
-      <div className="relative h-[150px]"></div>
+      <div className="relative h-[150px] w-11/12 mx-auto">
+        {/* course group */}
 
-      {/* course group */}
-
-      <div className="absolute flex gap-10 -bottom-28 justify-between w-full">
-        {courses.map((item, index) => {
-          return (
-            <CourseCard
-              key={index}
-              cardData={item}
-              currentCard={currentCard}
-              setCurrentCard={setCurrentCard}
-            />
-          );
-        })}
+        <div className="absolute flex gap-10 -bottom-28 justify-between w-full mt-10">
+          {courses.map((item, index) => {
+            return (
+              <CourseCard
+                key={index}
+                cardData={item}
+                currentCard={currentCard}
+                setCurrentCard={setCurrentCard}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
