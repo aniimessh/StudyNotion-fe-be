@@ -27,7 +27,7 @@ export const ExploreMore = () => {
 
   return (
     <div className="flex flex-col items-center ">
-      <div className="text-4xl font-bold">
+      <div className="text-4xl font-bold text-white font-inter">
         Unlock the{" "}
         <HightLightText
           text={"Power of Code"}
@@ -36,7 +36,7 @@ export const ExploreMore = () => {
           fontbold="font-bold"
         />
       </div>
-      <p className="text-lg">Learn to Build Anything You Can Imagine</p>
+      <p className="text-sm font-inter text-richblack-500">Learn to Build Anything You Can Imagine</p>
 
       <div className="flex gap-5 rounded-full bg-richblack-700 p-2 px-3 mt-5 mb-5 ">
         {Tabs.map((item, index) => {
@@ -58,7 +58,7 @@ export const ExploreMore = () => {
       <div className="relative h-[150px] w-11/12 mx-auto">
         {/* course group */}
 
-        <div className="absolute flex gap-10 -bottom-28 justify-between w-full mt-10">
+        <div className="absolute flex gap-10 -bottom-28 w-full mt-10 justify-center">
           {courses.map((item, index) => {
             return (
               <CourseCard
