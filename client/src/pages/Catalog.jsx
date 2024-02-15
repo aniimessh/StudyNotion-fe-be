@@ -71,19 +71,19 @@ const Catalog = () => {
           <p>Top courses in {catalogPageData?.data?.selectedCategory?.name}</p>
           <div>
             <CourseSlider
-                Courses={catalogPageData?.data?.differentCategory?.courses}
-              />
+              Courses={catalogPageData?.data?.differentCategory?.courses}
+            />
           </div>
         </section>
 
-        <section>
+        <section className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
           <p>Frequently Bought Together</p>
-          <div>
-            <div>
-              {catalogPageData?.data?.mostSellingCourses?.courses
+          <div className="py-8">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+              {catalogPageData?.data?.mostSellingCourses
                 ?.slice(0, 4)
                 .map((course, index) => {
-                  return <CardCourse course={course} key={index} height/>  
+                  return <CardCourse course={course} key={index} />;
                 })}
             </div>
           </div>
