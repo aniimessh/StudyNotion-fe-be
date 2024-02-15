@@ -24,7 +24,7 @@
     "react-scripts": "5.0.1",
     "react-type-animation": "^3.1.0",
     "redux-toolkit": "^1.1.2",
-    "swiper": "^9.3.2",
+    "swiper": "^9.4.1",
     "video-react": "^0.16.0",
     "web-vitals": "^2.1.4"
   },
@@ -42,8 +42,7 @@
     "eject": "react-scripts eject",
     "server": "cd ../server && npm run dev",
     "dev": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm start\" \"cd ../server && npm run dev\""
-}
-,
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

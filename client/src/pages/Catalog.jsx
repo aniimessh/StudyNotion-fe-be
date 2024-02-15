@@ -12,6 +12,9 @@ const Catalog = () => {
 
   const [categoryId, setCategoryId] = useState("");
   const [catalogPageData, setCatalogPageData] = useState(null);
+  const [active, setActive] = useState(1);
+
+  console.log("Catalog Page Data ====>", catalogPageData);
 
   useEffect(() => {
     const getCategory = async () => {
@@ -40,24 +43,62 @@ const Catalog = () => {
     getCategoryDetails();
   }, [categoryId]);
   return (
-    <div>
-      <div>
-        <p>
-          Home / Catalog /
-          <span>{catalogPageData?.data?.selectedCategory?.name}</span>
-        </p>
-        <p>{catalogPageData?.data?.selectedCategory?.name}</p>
-        <p>{catalogPageData?.data?.selectedCategory?.description}</p>
+    <div className="">
+      <div className="bg-richblack-700 w-full">
+        <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent flex flex-col gap-y-4">
+          <p className="text-richblack-300 font-inter font-normal">
+            Home / Catalog /
+            <span className="text-yellow-50 font-medium">
+              {" "}
+              {catalogPageData?.data?.selectedCategory?.name}
+            </span>
+          </p>
+          <p className="text-3xl font-inter text-white">
+            {catalogPageData?.data?.selectedCategory?.name}
+          </p>
+          <p className="text-base font-inter text-richblack-300">
+            {catalogPageData?.data?.selectedCategory?.description}
+          </p>
+        </div>
       </div>
 
       <div>
-        <section>
+        <section className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
           <div>
-            <div></div>
-            <div className="flex gap-x-2">
-              <p>Most Popular</p>
-              <p>New</p>
-              <p>Trending</p>
+            <p className="text-3xl text-white font-inter font-semibold mb-4">
+              Courses to get you started
+            </p>
+            <div className="flex gap-x-2 border-b border-richblack-700 mb-4">
+              <p
+                className={`px-4 py-2 ${
+                  active === 1
+                    ? "border-b border-b-yellow-25 text-yellow-25"
+                    : "text-richblack-50"
+                } cursor-pointer font-inter`}
+                onClick={() => setActive(1)}
+              >
+                Most Populer
+              </p>
+              <p
+                className={`px-4 py-2 ${
+                  active === 2
+                    ? "border-b border-b-yellow-25 text-yellow-25"
+                    : "text-richblack-50"
+                } cursor-pointer font-inter`}
+                onClick={() => setActive(2)}
+              >
+                New
+              </p>
+              <p
+                className={`px-4 py-2 ${
+                  active === 3
+                    ? "border-b border-b-yellow-25 text-yellow-25"
+                    : "text-richblack-50"
+                } cursor-pointer font-inter text-base`}
+                onClick={() => setActive(3)}
+              >
+                Trending
+              </p>
             </div>
             <div>
               <CourseSlider
@@ -67,8 +108,10 @@ const Catalog = () => {
           </div>
         </section>
 
-        <section>
-          <p>Top courses in {catalogPageData?.data?.selectedCategory?.name}</p>
+        <section className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+          <p className="text-3xl text-white font-inter font-semibold mb-4">
+            Top courses in {catalogPageData?.data?.selectedCategory?.name}
+          </p>
           <div>
             <CourseSlider
               Courses={catalogPageData?.data?.differentCategory?.courses}
@@ -77,7 +120,9 @@ const Catalog = () => {
         </section>
 
         <section className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-          <p>Frequently Bought Together</p>
+          <p className="text-3xl text-white font-inter font-semibold">
+            Frequently Bought Together
+          </p>
           <div className="py-8">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
               {catalogPageData?.data?.mostSellingCourses
