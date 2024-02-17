@@ -10,7 +10,7 @@ import { getCatalogPageData } from "../services/operations/getCatalogPageData";
 const Catalog = () => {
   const { catalogName } = useParams();
 
-  const [categoryId, setCategoryId] = useState("");
+  const [categoryId, setCategoryId] = useState(null);
   const [catalogPageData, setCatalogPageData] = useState(null);
   const [active, setActive] = useState(1);
 

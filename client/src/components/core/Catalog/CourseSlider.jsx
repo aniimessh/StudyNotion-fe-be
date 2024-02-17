@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-// import { FreeMode } from "swiper/modules";
+import { Autoplay, FreeMode, Navigation, Pagination } from "swiper";
 
 const CourseSlider = ({ Courses }) => {
   return (
@@ -22,7 +22,15 @@ const CourseSlider = ({ Courses }) => {
               slidesPerView: 3,
             },
           }}
-          // modules={[FreeMode]}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+            stopOnLastSlide: false
+          }}
+          modules={[Pagination, FreeMode, Autoplay, Navigation]}
+          pagination={{
+            dynamicBullets: true,
+          }}
           className="max-h-[30rem] mySwiper"
         >
           {Courses.map((course) => {
