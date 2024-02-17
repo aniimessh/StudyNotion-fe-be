@@ -37,7 +37,7 @@ const RenderCartCourses = () => {
               <div>
                 <button
                   className="flex items-center"
-                  onClick={dispatch(removeFromCart(course._id))}
+                  onClick={() => dispatch(removeFromCart(course._id))}
                 >
                   <CgTrash />
                   Remove
