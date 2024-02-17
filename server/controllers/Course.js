@@ -226,7 +226,7 @@ exports.getCourseDetails = async (req, res) => {
     //get id
     const { courseId } = req.body;
     //find course details
-    const courseDetails = await Course.find({ _id: courseId })
+    const courseDetails = await Course.findOne({ _id: courseId })
       .populate({
         path: "instructor",
         populate: {

@@ -27,7 +27,7 @@ import Course from "./pages/Course";
 function App() {
   const { user } = useSelector((state) => state.profile);
   return (
-    <div className="w-screen min-h-screen bg-richblack-800 flex flex-col font-inte">
+    <div className="w-screen min-h-screen bg-richblack-800 flex flex-col font-inter">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
