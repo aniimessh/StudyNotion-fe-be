@@ -6,6 +6,7 @@ import GetAvgRating from "../utils/avgRating";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import CourseCheckOutCard from "../components/core/Course/CourseCheckOutCard";
+import WhatYouWillLearn from "../components/core/Course/WhatYouWillLearn";
 
 const Course = () => {
   const { courseId } = useParams();
@@ -80,7 +81,11 @@ const Course = () => {
           </div>
         </div>
       </div>
-      <div className="w-8/12 mx-auto">Hello</div>
+      <div className="w-8/12 mx-auto">
+        <div className="border p-6 mt-3 w-1/2 border-richblack-600">
+          <WhatYouWillLearn coursePageData={coursePageData} />
+        </div>
+      </div>
     </div>
   );
 };
