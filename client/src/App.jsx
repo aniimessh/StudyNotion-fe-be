@@ -22,6 +22,7 @@ import InstructorCourses from "./components/core/Dashboard/InstructorDashboard/I
 import AddCourse from "./components/core/Dashboard/InstructorDashboard/AddCourse";
 import Navbar from "./components/common/Navbar";
 import Catalog from "./pages/Catalog";
+import Course from "./pages/Course";
 
 function App() {
   const { user } = useSelector((state) => state.profile);
@@ -39,6 +40,8 @@ function App() {
             </OpenRoute>
           }
         />
+        <Route path="course/:courseId" element={<Course />} />
+
         <Route
           path="login"
           element={
