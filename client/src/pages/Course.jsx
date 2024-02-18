@@ -7,6 +7,8 @@ import { AiOutlineGlobal } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import CourseCheckOutCard from "../components/core/Course/CourseCheckOutCard";
 import WhatYouWillLearn from "../components/core/Course/WhatYouWillLearn";
+import CourseContentSection from "../components/core/Course/CourseContentSection";
+import CourseAuthorSection from "../components/core/Course/CourseAuthorSection";
 
 const Course = () => {
   const { courseId } = useParams();
@@ -84,6 +86,12 @@ const Course = () => {
       <div className="w-8/12 mx-auto">
         <div className="border p-6 mt-3 w-1/2 border-richblack-600">
           <WhatYouWillLearn coursePageData={coursePageData} />
+        </div>
+        <div className="mt-4 w-1/2">
+          <CourseContentSection coursePageData={coursePageData} />
+        </div>
+        <div className="mt-4 w-1/2">
+          <CourseAuthorSection coursePageData={coursePageData} />
         </div>
       </div>
     </div>
