@@ -1,48 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ReactStars from "react-rating-stars-component";
-import { GoStar, GoStarFill } from "react-icons/go";
 import { CgTrash } from "react-icons/cg";
 import { removeFromCart } from "../../../../slices/cartSlice";
+import RatingStars from "../../../common/RatingStars";
+import GetAvgRating from "../../../../utils/avgRating";
 
 const RenderCartCourses = () => {
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   return (
-    <div>
+    <div className="">
       {cart.map((course, index) => {
         return (
           <>
-            <div>
-              <div>
-                <img src={course?.thumbnail} alt="" />
+            <div className=" flex w-full mt-4 gap-x-5 border-b py-4 justify-between border-richblack-700">
+              <div className="flex gap-x-5">
+                <img
+                  src={course?.thumbnail}
+                  alt=""
+                  width={400}
+                  className="rounded-md"
+                />
                 <div>
-                  <p>{course?.courseName}</p>
-                  <p>{course?.category?.name}</p>
-                </div>
-                <div>
-                  <span>4.8</span>
-                  <ReactStars
-                    count={5}
-                    size={20}
-                    edit={false}
-                    activeColor="#ffd700"
-                    emptyIcon={<GoStar />}
-                    fullIcon={<GoStarFill />}
-                  />
-                  <span>{course?.ratingAndReviews?.length}</span>
+                  <div>
+                    <p className="text-lg font-inter text-white">
+                      {course?.courseName}
+                    </p>
+                    <p className="font-inter text-richblack-300">
+                      {course?.category?.name}
+                    </p>
+                  </div>
+                  <div className="flex gap-x-2 items-center">
+                    <span className="text-yellow-50 font-semibold">
+                      {GetAvgRating(course.ratingAndReview)}
+                    </span>
+                    <RatingStars
+                      Review_Count={GetAvgRating(course.ratingAndReview)}
+                    />
+                    <span>{course?.ratingAndReviews?.length}</span>
+                  </div>
+                  <p className="font-inter text-sm text-richblack-300">
+                    Total Courses • Lesson • Beginner
+                  </p>
                 </div>
               </div>
 
               <div>
                 <button
-                  className="flex items-center"
+                  className="flex items-center text-pink-200 bg-richblack-700 rounded-md p-3"
                   onClick={() => dispatch(removeFromCart(course._id))}
                 >
                   <CgTrash />
                   Remove
                 </button>
-                <p>Rs. {course?.price}</p>
+                <p className="text-xl mt-2 font-inter  font-semibold text-yellow-100">Rs. {course?.price}</p>
               </div>
             </div>
           </>
