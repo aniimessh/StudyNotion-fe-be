@@ -1,7 +1,7 @@
 import React from "react";
 import { HiMiniChatBubbleLeftRight } from "react-icons/hi2";
 import ContactUsForm from "../components/common/ContactUsForm";
-import { Footer } from "../components/common/Footer";
+import Footer from "../components/common/Footer";
 
 const ContactUs = () => {
   return (

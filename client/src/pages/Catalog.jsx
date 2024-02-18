@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Footer } from "../components/common/Footer";
+import Footer from "../components/common/Footer";
 import CardCourse from "../components/core/Catalog/CardCourse";
 import CourseSlider from "../components/core/Catalog/CourseSlider";
 import { catalogData, categories } from "../services/api";

@@ -23,7 +23,7 @@ const community = ["Forums", "Chapters", "Events"];
 
 const Support = ["Help Center"];
 
-export const Footer = () => {
+const  Footer = () => {
   return (
     <div className="bg-richblack-700">
       <div className="w-11/12  flex mx-auto mt-10">
@@ -107,3 +107,5 @@ export const Footer = () => {
     </div>
   );
 };
+
+export default Footer

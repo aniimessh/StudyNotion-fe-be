@@ -8,8 +8,8 @@ import { Codeblocks } from "../components/core/HomePage/Codeblocks";
 import { TimeLineSection } from "../components/core/HomePage/TimeLineSection";
 import { LearningLanguageSection } from "../components/core/HomePage/LearningLanguageSection";
 import { InstructorSection } from "../components/core/HomePage/InstructorSection";
-import { Footer } from "../components/common/Footer";
 import { ExploreMore } from "../components/core/HomePage/ExploreMore";
+import Footer from "../components/common/Footer";
 
 export const Home = () => {
   return (

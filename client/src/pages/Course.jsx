@@ -8,6 +8,7 @@ import { BsInfoCircle } from "react-icons/bs";
 import CourseCheckOutCard from "../components/core/Course/CourseCheckOutCard";
 import WhatYouWillLearn from "../components/core/Course/WhatYouWillLearn";
 import CourseContentSection from "../components/core/Course/CourseContentSection";
+import Footer from "../components/common/Footer";
 import CourseAuthorSection from "../components/core/Course/CourseAuthorSection";
 
 const Course = () => {
@@ -94,6 +95,7 @@ const Course = () => {
           <CourseAuthorSection coursePageData={coursePageData} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
