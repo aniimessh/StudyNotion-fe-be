@@ -2,15 +2,27 @@ import React from "react";
 import { FaRegClock, FaArrowRotateRight } from "react-icons/fa6";
 import { MdImportantDevices } from "react-icons/md";
 import { LiaCertificateSolid } from "react-icons/lia";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../slices/cartSlice";
+import { buyCourse } from "../../../services/operations/studentPaymentAPI";
+import { useNavigate } from "react-router-dom";
 
 const CourseCheckOutCard = ({ coursePageData }) => {
   const dispatch = useDispatch();
-
+  const { token } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.profile);
+  const courseId = coursePageData?._id;
   const handleAddToCart = () => {
     dispatch(addToCart(coursePageData));
   };
+
+  const handleBuyCourse = () => {
+    if (token) {
+      buyCourse(token, [courseId], user, navigate, dispatch);
+    }
+  };
+
   return (
     <div>
       <div className="bg-richblack-500 rounded-md">
@@ -33,6 +45,7 @@ const CourseCheckOutCard = ({ coursePageData }) => {
               Add to Cart
             </button>
             <button
+              onClick={() => handleBuyCourse()}
               className="text-center text-[13px] px-6 py-3 rounded-md 
       bg-richblack-800 text-white hover:scale-95 transition-all duration-200 shadow-[1px_1px_0px_0px_#1a202c]"
             >

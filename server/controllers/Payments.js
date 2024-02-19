@@ -5,7 +5,9 @@ const mailSender = require("../utils/mailSender");
 const {
   courseEnrollmentEmail,
 } = require("../mail/templates/courseEnrollmentEmail");
+const crypto = require("crypto")
 const { default: mongoose } = require("mongoose");
+const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail");
 
 exports.capturePayment = async (req, res) => {
   const { courses } = req.body;
@@ -18,7 +20,7 @@ exports.capturePayment = async (req, res) => {
     });
   }
 
-  const totalAmount = 0;
+  let totalAmount = 0;
   for (const course_id of courses) {
     let course;
     try {
@@ -36,8 +38,9 @@ exports.capturePayment = async (req, res) => {
           message: "Student is already enrolled",
         });
       }
-      totalAmount = course.price;
+      totalAmount += course.price;
     } catch (err) {
+      console.log("ERROR WHILE CAPTURING PAYMENT");
       console.log(err.message);
     }
   }
@@ -49,10 +52,11 @@ exports.capturePayment = async (req, res) => {
   };
 
   try {
-    const payentResponse = await instance.orders.create(options);
+    const paymentResponse = await instance.orders.create(options);
     res.json({
       success: true,
       message: "Payment response created succesfully",
+      data: paymentResponse,
     });
   } catch (err) {
     console.log(err.message);
@@ -68,7 +72,7 @@ exports.verifyPayment = async (req, res) => {
 
   if (
     !razorpay_order_id ||
-    !razorpay_paymeny_id ||
+    !razorpay_payment_id ||
     !razorpay_signature ||
     !courses ||
     !userId
@@ -141,5 +145,33 @@ const enrollStudents = async (courses, res, userId) => {
     } catch (err) {
       console.log(err.message);
     }
+  }
+};
+
+exports.sendPaymentSuccessEmailAPI = async (req, res) => {
+  try {
+    const { order_id, paymentId, amount } = req.body;
+    const userId = req.user.id;
+    if (!order_id || !paymentId || !amount || !userId) {
+      return res.status(500).json({
+        success: false,
+        message: "Missing some Values",
+      });
+    }
+    const enrolledStudent = await User.findById(userId);
+    console.log("enrolledStudent ==> ",enrolledStudent);
+    await mailSender(
+      enrolledStudent.email,
+      `Payment Received`,
+      paymentSuccessEmail(
+        `${enrolledStudent.firstName} ${enrolledStudent.lastName}`,
+        amount / 100,
+        order_id,
+        paymentId
+      )
+    );
+  } catch (err) {
+    console.log("Error While Sending Mail");
+    console.log(err.message);
   }
 };
