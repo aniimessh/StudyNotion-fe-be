@@ -11,6 +11,7 @@ const EnrolledCourses = () => {
   const getEnrolledCourses = async () => {
     try {
       const result = await getUserEnrolledCourses(token);
+      console.log("ENROLLED COURSE RESULT => ", result);
       setEngrolledCourses(result);
     } catch (err) {
       console.log(err.message);

@@ -119,6 +119,7 @@ const enrollStudents = async (courses, res, userId) => {
         { $push: { studentsEnrolled: userId } },
         { new: true }
       );
+        console.log("ENROLLED COURSES  =>", enrolledCourse);
 
       if (!enrolledCourse) {
         return res.status(400).json({
@@ -127,7 +128,7 @@ const enrollStudents = async (courses, res, userId) => {
         });
       }
 
-      const enrolledStudent = await User.findByIdAdnUpdate(
+      const enrolledStudent = await User.findByIdAndUpdate(
         userId,
         { $push: { courses: courseId } },
         { new: true }

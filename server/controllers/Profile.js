@@ -29,7 +29,7 @@ exports.updateProfile = async (req, res) => {
 
     const updatedUserDetails = await User.findById(id)
       .populate("additionalDetails")
-      .exec()
+      .exec();
 
     return res.json({
       success: true,
@@ -136,6 +136,7 @@ exports.getEnrolledCourses = async (req, res) => {
     })
       .populate("courses")
       .exec();
+    console.log("USER DETAILS -->", userDetails);
     if (!userDetails) {
       return res.status(400).json({
         success: false,
