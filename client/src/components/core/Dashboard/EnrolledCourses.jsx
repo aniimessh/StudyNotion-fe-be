@@ -87,7 +87,7 @@ const EnrolledCourses = () => {
                     className="outline-1 outline outline-richblack-700"
                     key={index}
                   >
-                    <td >
+                    <td>
                       <Link className="flex items-center p-2 gap-x-3">
                         <img
                           src={course.thumbnail}

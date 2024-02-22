@@ -12,7 +12,10 @@ const CourseCheckOutCard = ({ coursePageData }) => {
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.profile);
+
+  console.log("USER PROFILE DETAILS  -> ", user);
   const courseId = coursePageData?._id;
+  console.log("COURSEID -> ", courseId);
   const handleAddToCart = () => {
     dispatch(addToCart(coursePageData));
   };
@@ -49,7 +52,11 @@ const CourseCheckOutCard = ({ coursePageData }) => {
               className="text-center text-[13px] px-6 py-3 rounded-md 
       bg-richblack-800 text-white hover:scale-95 transition-all duration-200 shadow-[1px_1px_0px_0px_#1a202c]"
             >
-              Buy Now
+              {user.courses[0] === courseId ? (
+                <p>Go to Course</p>
+              ) : (
+                <p>Buy Now</p>
+              )}
             </button>
           </div>
           <p className="text-center text-sm text-richblack-300 mt-4">
