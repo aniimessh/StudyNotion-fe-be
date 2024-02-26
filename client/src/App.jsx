@@ -23,6 +23,7 @@ import AddCourse from "./components/core/Dashboard/InstructorDashboard/AddCourse
 import Navbar from "./components/common/Navbar";
 import Catalog from "./pages/Catalog";
 import Course from "./pages/Course";
+import ViewCourse from "./pages/ViewCourse";
 
 function App() {
   const { user } = useSelector((state) => state.profile);
@@ -109,6 +110,21 @@ function App() {
               <Route path="dashboard/add-course" element={<AddCourse />} />
             </>
           )}
+        </Route>
+
+        <Route element={
+          <PrivateRoute>
+            <ViewCourse />
+          </PrivateRoute>
+        }>
+          {
+            user.accountType === ACCOUNT_TYPE.STUDENT && (
+              <>
+              <Route
+              path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId" />
+              </>
+            )
+          }
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
