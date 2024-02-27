@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { getUserEnrolledCourses } from "../../../services/operations/profileAPI";
 import ProgressBar from "@ramonak/react-progress-bar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Tabs = ["All", "Pending", "Completed"];
 
@@ -11,11 +11,12 @@ const EnrolledCourses = () => {
   const { token } = useSelector((state) => state.auth);
   const [enrolledCourses, setEngrolledCourses] = useState(null);
   const [currentTab, setCurrentTab] = useState(Tabs[0]);
+  const navigate = useNavigate();
+  console.log("Final Result ==>", enrolledCourses)
 
   const getEnrolledCourses = async () => {
     try {
       const result = await getUserEnrolledCourses(token);
-      console.log("ENROLLED COURSE RESULT => ", result);
       setEngrolledCourses(result);
     } catch (err) {
       console.log(err.message);
@@ -88,7 +89,10 @@ const EnrolledCourses = () => {
                     key={index}
                   >
                     <td>
-                      <Link className="flex items-center p-2 gap-x-3">
+                      <Link
+                        className="flex items-center p-2 gap-x-3"
+                        to={`/view-course/${course._id}/section/${course?.courseContent[0]?._id}/sub-section/${course?.courseContent?.[0]?.subSection?.[0]?._id}`}
+                      >
                         <img
                           src={course.thumbnail}
                           alt=""

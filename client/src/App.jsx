@@ -118,7 +118,7 @@ function App() {
           </PrivateRoute>
         }>
           {
-            user.accountType === ACCOUNT_TYPE.STUDENT && (
+            user?.accountType === ACCOUNT_TYPE.STUDENT && (
               <>
               <Route
               path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId" />
