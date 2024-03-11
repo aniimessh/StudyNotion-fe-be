@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import {  useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import IconButton from "../../common/IconButton";
+import { IoChevronDownSharp } from "react-icons/io5";
 
-const VideoDetailsSidebar = ({specificCourseData}) => {
+const VideoDetailsSidebar = ({ specificCourseData }) => {
   console.log("SPECIFIC COURSE DETAILS ===>", specificCourseData);
   const [activeStatus, setActiveStatus] = useState("");
   const [videobarActive, setVideobarActive] = useState("");
@@ -17,6 +18,8 @@ const VideoDetailsSidebar = ({specificCourseData}) => {
     totalNoOfLectures,
     completedLectures,
   } = useSelector((state) => state.viewCourse);
+
+  console.log(totalNoOfLectures);
 
   useEffect(() => {
     (() => {
@@ -37,19 +40,34 @@ const VideoDetailsSidebar = ({specificCourseData}) => {
       setVideobarActive(activeSubSectionId);
     })();
   }, [courseSectionData, location.pathname, courseEntireData]);
-  return <>
-  <div>
-      <div>
+  return (
+    <>
+      <div className="bg-richblack-600 w-max h-[90vh] p-3">
+        <div>
           <div>
-             <span> {specificCourseData?.courseDetails?.courseName.substring(0, 20)}...</span>
-             <IconButton text="Add review" onclick={() => {}}/>
+            <span className="text-white font-semibold">
+              {" "}
+              {specificCourseData?.courseDetails?.courseName}
+            </span>
+            <span className="">
+              {completedLectures.length}/{totalNoOfLectures}
+            </span>
+            {/* <IconButton text="Add review" onclick={() => {}}/>             */}
           </div>
           <div>
-              
+            {courseSectionData.map((course, index) => (
+              <div onClick={() => setActiveStatus(course?._id)} key={index}>
+                <div className="flex justify-between">
+                  <div>{course?.sectionName}</div>
+                  <IoChevronDownSharp />
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
       </div>
-  </div>
-  </>;
+    </>
+  );
 };
 
 export default VideoDetailsSidebar;
