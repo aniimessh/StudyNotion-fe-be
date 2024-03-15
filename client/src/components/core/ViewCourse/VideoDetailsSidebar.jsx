@@ -61,6 +61,33 @@ const VideoDetailsSidebar = ({ specificCourseData }) => {
                   <div>{course?.sectionName}</div>
                   <IoChevronDownSharp />
                 </div>
+
+                <div>
+                  {activeStatus === course?._id && (
+                    <div>
+                      {course?.subSection.map((topic, index) => (
+                        <div
+                          key={index}
+                          className={`${
+                            topic?.id === videobarActive ? "bg-yellow-50" : ""
+                          }`}
+                          onClick={() => {
+                            navigate(
+                              `/view-course/${courseEntireData?._id}/section/${course?._id}/sub-section/${topic?._id}`
+                            );
+                            setVideobarActive(topic?._id);
+                          }}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={completedLectures.includes(topic?._id)}
+                          />
+                          <span>{topic?.title}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
