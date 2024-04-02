@@ -3,6 +3,7 @@ import { IoMdClose } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import ReactStars from "react-rating-stars-component";
+import IconButton from "../../common/IconButton";
 
 const CourseReviewModal = ({ setReviewModal }) => {
   const { user } = useSelector((state) => state.profile);
@@ -22,7 +23,9 @@ const CourseReviewModal = ({ setReviewModal }) => {
 
   const onSubmit = () => {};
 
-  const ratingChange = () => {};
+  const ratingChange = (newRating) => {
+    setValue("courseRating", newRating);
+  };
   return (
     <div>
       <div>
@@ -53,11 +56,33 @@ const CourseReviewModal = ({ setReviewModal }) => {
             className="mt-6 flex flex-col"
           >
             <ReactStars
-            count={5}
-            onChange={ratingChange}
-            size={24}
-            activeColor="#ffd700"
+              count={5}
+              onChange={ratingChange}
+              size={24}
+              activeColor="#ffd700"
             />
+
+            <div>
+              <label htmlFor="courseExperience">
+                Add your experience<sup>*</sup>
+              </label>
+              <textarea
+                name=""
+                id="courseExperience"
+                cols="30"
+                rows="10"
+                placeholder="Share your experience here..."
+                {...register("courseExperience", { required: true })}
+              ></textarea>
+              {errors.courseExperience && (
+                <span>Please add your experience...</span>
+              )}
+            </div>
+
+            <div>
+              <button onClick={() => setReviewModal(false)}>Cancel</button>
+              <IconButton text="Submit" type="submit" />
+            </div>
           </form>
         </div>
       </div>
