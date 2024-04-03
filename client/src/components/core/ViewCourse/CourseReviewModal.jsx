@@ -81,7 +81,7 @@ const CourseReviewModal = ({ setReviewModal }) => {
 
             <div>
               <button onClick={() => setReviewModal(false)}>Cancel</button>
-              <IconButton text="Submit" type="submit" />
+              <IconButton text="Submit" type="submit" /> 
             </div>
           </form>
         </div>
