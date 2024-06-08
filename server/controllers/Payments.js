@@ -5,9 +5,12 @@ const mailSender = require("../utils/mailSender");
 const {
   courseEnrollmentEmail,
 } = require("../mail/templates/courseEnrollmentEmail");
-const crypto = require("crypto")
+const crypto = require("crypto");
 const { default: mongoose } = require("mongoose");
-const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail");
+const {
+  paymentSuccessEmail,
+} = require("../mail/templates/paymentSuccessEmail");
+const CourseProgress = require("../models/CourseProgress");
 
 exports.capturePayment = async (req, res) => {
   const { courses } = req.body;
@@ -119,7 +122,7 @@ const enrollStudents = async (courses, res, userId) => {
         { $push: { studentsEnrolled: userId } },
         { new: true }
       );
-        console.log("ENROLLED COURSES  =>", enrolledCourse);
+      console.log("ENROLLED COURSES  =>", enrolledCourse);
 
       if (!enrolledCourse) {
         return res.status(400).json({
@@ -128,9 +131,20 @@ const enrollStudents = async (courses, res, userId) => {
         });
       }
 
+      const courseProgress = await CourseProgress.create({
+        courseId: courseId,
+        userId: userId,
+        completedVideos: [],
+      });
+
       const enrolledStudent = await User.findByIdAndUpdate(
         userId,
-        { $push: { courses: courseId } },
+        {
+          $push: {
+            courses: courseId,
+            courseProgress: courseProgress._id,
+          },
+        },
         { new: true }
       );
 
@@ -160,7 +174,7 @@ exports.sendPaymentSuccessEmailAPI = async (req, res) => {
       });
     }
     const enrolledStudent = await User.findById(userId);
-    console.log("enrolledStudent ==> ",enrolledStudent);
+    console.log("enrolledStudent ==> ", enrolledStudent);
     await mailSender(
       enrolledStudent.email,
       `Payment Received`,
